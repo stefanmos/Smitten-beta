@@ -1,0 +1,12 @@
+<!-- <div class="grid">
+
+  <h1>Editing Invite</h1>
+
+  <%= render 'form', invite: @invite %>
+
+  <%= link_to 'Show', @invite %> |
+  <%= link_to 'Back', invites_path %>
+
+</div> -->
+
+<%= react_component("Editor", props: @invite, prerender: false) %>

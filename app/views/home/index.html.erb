@@ -1,0 +1,134 @@
+<nav>
+  <div class="grid">
+    <ul>
+      <li><a href="home.html"><img src='assets/logo.svg' alt=""></a></li>
+    </ul>
+    <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to "Preview", current_user.invite %></li>
+          <li><%= link_to "Edit Invite", edit_invite_path(current_user.invite) %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li><a href="#">Feautures</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a class="cta" href="#">Get Started</a></li>
+          <li>|</li>
+          <li><%= link_to('Login', new_user_session_path)  %></li>
+        <% end %>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    </ul>
+  </div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</nav>
+
+<div class="grid-full header">
+  <div class="grid">
+    <h1>Beautiful Wedding Invitations</h1>
+    <h5>CRAFTING YOUR OWN ONLINE INVITE COULD’NT BE ANY EASIER</h5>
+    <hr>
+    <a class="button" href="#">START CRAFTING</a>
+    <img src='assets/header.png' alt="">
+  </div>
+</div>
+
+<div class="grid-full customize">
+  <div class="grid">
+    <div class="column-12-12">
+      <h1>Customize</h1>
+      <h5>INLINE EDITING MEANS NO SEARCHING WHERE TO EDIT THINGS</h5>
+    </div>
+    <div class="column-12-12 options">
+      <div class="column-3-12 option">
+        <h5>Fonts</h5>
+        <h3>Fonts</h3>
+        <p>Pick the right fonts for your projects from Google web fonts library built in within our customizer.</p>
+      </div>
+      <div class="column-3-12 option">
+        <h5>Colors</h5>
+        <h3>Colors</h3>
+        <p>Pick the right fonts for your projects from Google web fonts library built in within our customizer.</p>
+      </div>
+      <div class="column-3-12 option">
+        <h5>Styles</h5>
+        <h3>Styles</h3>
+        <p>Pick the right fonts for your projects from Google web fonts library built in within our customizer.</p>
+      </div>
+      <div class="column-3-12 option">
+        <h5>Animations</h5>
+        <h3>Animations</h3>
+        <p>Choose an animation from animate.css that you like and use it without any installation.</p>
+      </div>
+      <div class="column-12-12">
+        <img src='assets/editor.png' alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-full inspiration">
+  <div class="grid">
+    <div class="column-12-12">
+      <h1>Inspiration</h1>
+    </div>
+    <div class="column-6-12">1</div>
+    <div class="column-6-12">2</div>
+  </div>
+</div>
+
+<div class="grid-full pricing">
+  <div class="grid options">
+    <div class="column-1-12"></div>
+    <div class="column-10-12">
+
+      <div class="column-12-12">
+        <h1>Pricing</h1>
+      </div>
+
+      <div class="column-4-12">
+        <div class="option">
+          <h5>STARTER PACKAGE</h5>
+          <h2>0</h2>
+          <hr>
+          <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+          </ul>
+          <a class="button" href="#">Get Started</a>
+        </div>
+      </div>
+
+      <div class="column-4-12">
+        <div class="option">
+          <h5>STARTER PACKAGE</h5>
+          <h2>7</h2>
+          <hr>
+          <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+          </ul>
+          <a class="button" href="#">Get Started</a>
+        </div>
+      </div>
+
+      <div class="column-4-12">
+        <div class="option">
+          <h5>STARTER PACKAGE</h5>
+          <h2>9</h2>
+          <hr>
+          <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+          </ul>
+          <a class="button" href="#">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <div class="column-1-12"></div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+@import 'config'
+@import 'mixins'
+// Custom SASS
+
+.header
+  background: #FFB9B9
+  text-align: center
+  padding-top: 15vh
+  img
+    margin-top: 10vh
+
+.customize
+  background: #313131
+  color: #FFF
+  text-align: center
+  .options
+    text-align: left
+    .option
+      padding: 20px
+      border-radius: 4px
+      @include transition(.3s)
+      h5
+        color: #FFB9B9
+      &:hover
+        background: #272727
+        box-shadow: 0 12px 20px 0 rgba(0,0,0,0.10)
+
+.inspiration
+  background: #222222
+  color: #FFF
+  text-align: center
+
+.pricing
+  background: #222222
+  color: #FFF
+  text-align: center
+  .column-4-12
+    padding: 10px
+    .option
+      padding: 20px
+      border-radius: 4px
+      box-shadow: 0 12px 20px 0 rgba(0,0,0,0.10)
+      background: #272727
+      &:hover

@@ -1,0 +1,36 @@
+@import 'config'
+@import 'mixins'
+
+$column-width: 100% / $columns
+
+[class*='grid']:after
+  content: ""
+  display: table
+  clear: both
+
+.grid-full
+  width: 100%
+
+.grid
+  max-width: $grid-size
+  margin: 0 auto
+
+.column
+  display: block
+  float: left
+  padding: $content-padding
+
+@for $x from 1 through $columns
+  .column-#{$x}-#{$columns}
+    width: $column-width * $x
+    @extend .column
+
+@media (min-width: $mobile) and (max-width: $tablet)
+  @for $x from 1 through ($columns - 1)
+    .column-#{$x}-#{$columns}
+      width: 50%
+
+@media (max-width: $mobile)
+  @for $x from 1 through $columns
+    .column-#{$x}-#{$columns}
+      width: 100%

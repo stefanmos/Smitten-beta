@@ -10,6 +10,17 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require partials/_config
+ *= require partials/_reset
+ *= require partials/_config
+ *= require partials/_mixins
+ *= require partials/_grid
+ *= require partials/_typography
+ *= require partials/_ui
+ *= require partials/_utilities
+ *= require partials/_custom
+ *= require partials/_home
+ *= require partials/_login
  *= require_tree .
  *= require_self
  */

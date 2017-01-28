@@ -1,0 +1,102 @@
+@import 'config'
+@import 'mixins'
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900)
+
+// Smitten Icons
+
+@font-face
+  font-family: 'Smitten'
+  src: url('smitten.eot')
+  src: url('smitten.eot?#iefix') format('embedded-opentype'),asset-url('smitten.woff') format('woff'),url('smitten.ttf') format('truetype'),url('smitten.svg#smitten') format('svg')
+  font-weight: normal
+  font-style: normal
+
+[class*='icon-']:before
+  display: inline-block
+  font-family: 'Smitten'
+  font-style: normal
+  font-weight: normal
+  line-height: 1
+  font-size: 14rem
+  margin-top: 4px
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  pointer-events: none
+  cursor: none
+
+
+.icon-bridemaidsandgroomsmen:before
+  content: '\0041'
+.icon-edit:before
+  content: '\0042'
+.icon-foodmenu:before
+  content: '\0043'
+.icon-gallery:before
+  content: '\0044'
+.icon-giftregistry:before
+  content: '\0045'
+.icon-header:before
+  content: '\0046'
+.icon-home:before
+  content: '\0047'
+.icon-menu:before
+  content: '\0048'
+.icon-pin:before
+  content: '\0049'
+.icon-rsvp:before
+  content: '\004a'
+.icon-save:before
+  content: '\004b'
+.icon-schedule:before
+  content: '\004c'
+.icon-story:before
+  content: '\004d'
+.icon-venue:before
+  content: ' \004e'
+
+// Typography
+
+html
+  font-size: $font-base
+
+body
+  font-size: 14rem
+  font-family: $brand-font
+  line-height: $global-line-height
+  font-weight: 300
+  text-align: left
+
+h1,h2,h3,h4,h5,h6,small
+  font-weight: 100
+  margin: 0.4em 0
+
+h1
+  font-size: 55rem
+h2
+  font-size: 39rem
+h3
+  font-size: 27rem
+h4
+  font-size: 19rem
+h5
+  font-size: 9rem
+  letter-spacing: 2px
+h6
+  font-size: 7rem
+small
+  font-size: 8rem
+p
+  font-family: "lato"
+  font-size: 14rem
+  margin-bottom: 1em
+  line-height: $paragraph-line-height
+b
+  font-weight: 500
+
+a
+  text-decoration: none
+  font-size: 12rem
+  font-weight: 300
+  color: $primary-color
+  &:hover
+    color: darken($primary-color, 50%)

@@ -1,0 +1,315 @@
+@import 'config'
+@import 'mixins'
+// 6. UI
+// 6.1 Navagation
+
+nav
+  width: 100%
+  z-index: 10
+  text-align: center
+  position: fixed
+  top: 0
+  ul:first-child
+    float: left
+  ul:last-child
+    float: right
+  ul li
+    display: inline-block
+    margin: 20px 10px
+    &:first-child
+      margin-left: 0
+    &:last-child
+      margin-right: 0
+    .cta
+      background: #FF6A6A
+      padding: 5px 10px 4px 10px
+      border-radius: 4px
+      color: #FFF
+      &:hover
+        background: darken( #FF6A6A, 10% )
+
+// 6.2 Lists
+
+// 6.3.1 Buttons
+
+.button
+  display: inline-block
+  border: .5px solid #FFF
+  border-radius: $border-radius
+  border-color: #979797
+  text-align: center
+  background: none
+  font-size: 10rem
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  padding: 5px 7px
+  margin: 13px 0
+  font-weight: 500
+  cursor: pointer
+  color: #979797
+  +transition(.5s)
+  &:hover
+    background: #FFF
+    color: #000
+
+.button-left
+  @extend .button
+  float: left
+.button-right
+  @extend .button
+  float: right
+
+// 6.3.2 Grouped Buttons
+
+.button-group
+  display: inline-block
+  .button
+    display: inline-block
+    border-radius: 0
+    padding: 10px 15px
+    margin: 10px -2px
+    &:first-child
+      border-radius: $border-radius 0 0 $border-radius
+      margin-left: 0
+    &:last-child
+      border-radius: 0 $border-radius $border-radius 0
+      margin-right: 0
+
+@media (max-width: $mobile)
+  .button-group
+    display: block
+    width: 100%
+    .button
+      display: block
+      width: 100%
+      margin: 0
+      border-radius: 0
+      &:first-child
+        border-radius: $border-radius $border-radius 0 0
+      &:last-child
+        border-radius: 0 0 $border-radius $border-radius
+
+// 6.4 Input
+
+input, textarea
+  display: block
+  width: 100%
+  padding: $input-padding
+  margin: 5px 0 10px 0
+  background: #1D1D1D
+  border: 1px solid #1D1D1D
+  border-radius: $border-radius
+  font-family: $brand-font
+  font-size: 12px
+  font-weight: 300
+  color: #7D8086
+  &:hover
+    border: 1px solid #353536
+  &:focus
+    border: 1px solid #007FFF
+.color-picker
+  padding: 10px 10px 10px 40px
+.color-block
+  display: block
+  margin-top: -40px
+  margin-bottom: 20px
+  margin-left: 10px
+  width: 20px
+  height: 20px
+  background: #000
+  border-radius: $border-radius
+
+textarea
+  height: 150px
+
+input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, textarea:-ms-input-placeholder
+  font-family: $brand-font
+  font-size: 12px
+  font-weight: 300
+  color: #888
+
+// 6.5 Labels
+
+label
+  font-size: 12px
+  font-weight: 400
+  color: #585858
+
+// 6.6 Button Dropdowns & Select Boxes
+// Note: Rewrite dropdowns with SASS nesting
+
+select
+  display: block
+  width: 100%
+  position: relative
+  margin: 5px 0 10px 0
+  background: #1D1D1D
+  background-image: linear-gradient(45deg, transparent 50%, #FFF 50%), linear-gradient(135deg, #FFF 50%, transparent 50%)
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em
+  background-size: 5px 5px
+  background-repeat: no-repeat
+  -webkit-appearance: none
+  -moz-appearance: none
+  padding: $input-padding
+  border-radius: $border-radius
+  border: 1px solid #1D1D1D
+  color: #7D8086
+  font-family: $brand-font
+  font-weight: 300
+  font-size: 12px
+  cursor: pointer
+  &:hover
+    border: 1px solid #353536
+  &:focus
+    border: 1px solid #007FFF
+
+.dropdown
+  -webkit-appearance: none
+  position: relative
+  padding: 10px 40px 10px 20px
+  display: inline-block
+  text-decoration: none
+  font-weight: bold
+  margin: auto
+  border-radius: $border-radius
+  border: $border-color
+  background: $primary-color
+  Color: #FFFFFF
+  font-weight: 500
+  font-size: 10px
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  cursor: pointer
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -o-user-select: none
+  user-select: none
+  @include transition(.3s)
+  &:hover, &dropdown:focus
+    color: #FFFFFF
+    background: darken( $primary-color, 20% )
+    border: 1px solid darken( $primary-color, 20% )
+  ul
+    position: absolute
+    z-index: 999
+    width: 100%
+    margin: 8px -20px
+    border-radius: 0
+    opacity: 0
+    padding: 40px 0 0
+    pointer-events: none
+    @include transition(.3s)
+    li
+      display: block
+      float: left
+      margin: 0
+      width: 100%
+      border-left: $border-color
+      border-right: $border-color
+      background: $secondary-color
+      &:first-child
+        border-radius: $border-radius $border-radius 0 0
+        border-top: #000
+      &:last-child
+        border-radius: 0 0 $border-radius $border-radius
+        border-bottom: #000
+      a
+        text-decoration:none
+        text-transform: capitalize
+        padding: 10px
+        text-align: left
+        display: block
+        font-size: 10rem
+        font-weight: 500
+        color: #000
+        border-radius: $border-radius
+        @include transition(.3s)
+        &:hover
+          color: #FFF
+          background: $primary-color
+
+.dropdown:after
+  position: absolute
+  top: 40%
+  right: 15px
+  content: " "
+  height: 0
+  border: solid transparent
+  border-top-color: #FFF
+  border-width: 5px
+  @include transition(.3s)
+
+.dropdown:hover:after
+  border-top-color: #FFF
+
+.dropdown ul:before
+  position: relative
+  top: 0
+  right: 15px
+  float: right
+  content: " "
+  height: 0
+  border: solid transparent
+  border-bottom-color: $secondary-color
+  border-width: 5px
+
+.open > ul
+  opacity: 1
+  padding: 0
+  pointer-events: auto
+
+// 6.7 Tables
+
+table
+  background: none
+  font-size: 12px
+
+  th
+    font-weight: 400
+    text-align: left
+    padding: 5px 0
+
+  tr
+    border-bottom: 1px solid #000
+    td
+      padding: 5px 0
+
+// 6.8 Tabs
+
+ul.tabs:before
+  clear: both
+
+ul.tabs
+  display: block
+  margin: 0
+  padding: 0
+  list-style: none
+
+ul.tabs li
+  background: none
+  font-size: 12px
+  color: #222
+  display: inline-block
+  padding: 10px 15px
+  border-radius: $border-radius $border-radius 0 0
+  cursor: pointer
+
+ul.tabs li.current
+  background: #ededed
+  color: #222
+
+ul.tabs li:hover
+  background: #F1F1F1
+
+.tab-content
+  display: none
+  background: #ededed
+  padding: 10px
+
+.tab-content.current
+  display: inherit
+
+//6.9 Checkboxes
+
+//6.10 Validation "Error Messages"

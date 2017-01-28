@@ -1,0 +1,157 @@
+<%= form_for(invite) do |f| %>
+  <% if invite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invite.errors.count, "error") %> prohibited this invite from being saved:</h2>
+
+      <ul>
+      <% invite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :header_title %>
+    <%= f.text_field :header_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wedding_date %>
+    <%= f.text_field :wedding_date %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :primary_color %>
+    <%= f.number_field :primary_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_color %>
+    <%= f.number_field :secondary_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :header_color %>
+    <%= f.number_field :header_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :primary_background_color %>
+    <%= f.number_field :primary_background_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_background_color %>
+    <%= f.number_field :secondary_background_color %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :header_font %>
+    <%= f.text_field :header_font %>
+  </div>
+
+  <div class="field">
+    <%= f.label :primary_font %>
+    <%= f.text_field :primary_font %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_font %>
+    <%= f.text_field :secondary_font %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :header_font_size %>
+    <%= f.number_field :header_font_size %>
+  </div>
+
+  <div class="field">
+    <%= f.label :primary_font_size %>
+    <%= f.number_field :primary_font_size %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_font_size %>
+    <%= f.number_field :secondary_font_size %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :primary_font_letterspacing %>
+    <%= f.number_field :primary_font_letterspacing %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_font_letterspacing %>
+    <%= f.number_field :secondary_font_letterspacing %>
+  </div>
+
+  <div class="field">
+    <%= f.label :header_font_letterspacing %>
+    <%= f.number_field :header_font_letterspacing %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :bride_name %>
+    <%= f.text_field :bride_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bride_description %>
+    <%= f.text_area :bride_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :groom_name %>
+    <%= f.text_field :groom_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :groom_name %>
+    <%= f.text_area :groom_description %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :story_title %>
+    <%= f.text_field :story_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :story_description %>
+    <%= f.text_area :story_description %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :venue_name %>
+    <%= f.text_field :venue_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :venue_description %>
+    <%= f.text_area :venue_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :venue_coordinates %>
+    <%= f.text_field :venue_coordinates %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
