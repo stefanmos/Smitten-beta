@@ -5,9 +5,7 @@ export default class Preview extends React.Component {
     return (
 
       <div id="preview">
-        <h1 style={{color: this.props.header_color, fontFamily: this.props.header_font, LetterSpacing: this.props.header_font_letterspacing}}>{this.props.header_title}</h1>
-        <h2>{this.props.header_title}</h2>
-
+        <h1 style={{color: this.props.header_color, fontSize: this.props.header_font_size, fontFamily: this.props.header_font, letterSpacing: this.props.header_font_letterspacing}}>{this.props.header_title}</h1>
 
         {this.props.header_title}<br></br>
         {this.props.wedding_date}<br></br>
@@ -25,7 +23,6 @@ export default class Preview extends React.Component {
         {this.props.primary_font_letterspacing}<br></br>
         {this.props.secondary_font_letterspacing}<br></br>
         {this.props.header_font_letterspacing}
-
 
       </div>
 

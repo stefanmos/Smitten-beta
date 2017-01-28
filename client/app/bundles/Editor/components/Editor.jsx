@@ -70,12 +70,12 @@ export default class Editor extends React.Component {
     if(styleProperty === 'header_font') this.setState({ header_font: styleValue })
     if(styleProperty === 'primary_font') this.setState({ primary_font: styleValue })
     if(styleProperty === 'secondary_font') this.setState({ secondary_font: styleValue })
-    if(styleProperty === 'header_font_size') this.setState({ header_font_size: styleValue })
-    if(styleProperty === 'primary_font_size') this.setState({ primary_font_size: styleValue })
+    if(styleProperty === 'header_font_size') this.setState({ header_font_size: styleValue + "px" })
+    if(styleProperty === 'primary_font_size') this.setState({ primary_font_size: styleValue + "px" })
     if(styleProperty === 'secondary_font_size') this.setState({ secondary_font_size: styleValue })
-    if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue })
-    if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue })
-    if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue })
+    if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue + "px" })
+    if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue + "px" })
+    if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue + "px" })
 
   }
 
@@ -178,41 +178,60 @@ export default class Editor extends React.Component {
                 <option value="Avenir">Avenir</option>
               </select>
 
+              <label>Primary Color</label>
+              <input className="color-picker" name="invite[primary_color]" readOnly value={this.state.primary_color}/>
+              <span className="color-block"><ColorPicker color={this.state.primary_color} update={this._handlePrimaryColor.bind(this)}/></span>
 
-              <label>Primary Font Size</label>
+              <label>Secondary Color</label>
+              <input className="color-picker" name="invite[secondary_color]" readOnly value={this.state.secondary_color}/>
+              <span className="color-block"><ColorPicker color={this.state.secondary_color} update={this._handleSecondaryColor.bind(this)}/></span>
+
+              <label>Header Color</label>
+              <input className="color-picker" name="invite[header_color]" readOnly value={this.state.header_color}/>
+              <span className="color-block"><ColorPicker color={this.state.header_color} update={this._handleHeaderColor.bind(this)}/></span>
+
+              <label>Primary Color</label>
+              <input className="color-picker" name="invite[primary_background_color]" readOnly value={this.state.primary_background_color}/>
+              <span className="color-block"><ColorPicker color={this.state.primary_background_color} update={this._handlePrimaryBackgroundColor.bind(this)}/></span>
+
+              <label>Primary Color</label>
+              <input className="color-picker" name="invite[secondary_background_color]" readOnly value={this.state.secondary_background_color}/>
+              <span className="color-block"><ColorPicker color={this.state.secondary_background_color} update={this._handleSecondaryBackgroundColor.bind(this)}/></span>
+
+              <label>Header Font Size</label>
               <span className="input-slider">
-                <label>{this.state.header_font_size}px</label>
+                <label>{this.state.header_font_size}</label>
                 <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.props.header_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font Size</label>
               <span className="input-slider">
-                <label>{this.state.primary_font_size}px</label>
+                <label>{this.state.primary_font_size}</label>
                 <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.props.primary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font Size</label>
               <span className="input-slider">
-                <label>{this.state.secondary_font_size}px</label>
+                <label>{this.state.secondary_font_size}</label>
                 <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.props.secondary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
-              <label>Secondary Font Letterspacing</label>
+              <label>Primary Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.primary_font_letterspacing}px</label>
-                <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="30" max="150" defaultValue={this.props.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <label>{this.state.primary_font_letterspacing}</label>
+                <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="-4" max="150" defaultValue={this.props.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.secondary_font_letterspacing}px</label>
-                <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="30" max="150" defaultValue={this.props.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <label>{this.state.secondary_font_letterspacing}</label>
+                <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="-4" max="150" defaultValue={this.props.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
-              <label>Secondary Font Letterspacing</label>
+              <label>Header Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.header_font_letterspacing}px</label>
-                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="30" max="150" defaultValue={this.props.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <label>{this.state.header_font_letterspacing}</label>
+                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.props.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
             </div>
