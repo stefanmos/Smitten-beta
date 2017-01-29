@@ -59,38 +59,6 @@ nav
   @extend .button
   float: right
 
-// 6.3.2 Grouped Buttons
-
-.button-group
-  display: inline-block
-  .button
-    display: inline-block
-    border-radius: 0
-    padding: 10px 15px
-    margin: 10px -2px
-    &:first-child
-      border-radius: $border-radius 0 0 $border-radius
-      margin-left: 0
-    &:last-child
-      border-radius: 0 $border-radius $border-radius 0
-      margin-right: 0
-
-@media (max-width: $mobile)
-  .button-group
-    display: block
-    width: 100%
-    .button
-      display: block
-      width: 100%
-      margin: 0
-      border-radius: 0
-      &:first-child
-        border-radius: $border-radius $border-radius 0 0
-      &:last-child
-        border-radius: 0 0 $border-radius $border-radius
-
-// 6.4 Input
-
 input, textarea
   display: block
   width: 100%
@@ -107,6 +75,7 @@ input, textarea
     border: 1px solid #353536
   &:focus
     border: 1px solid #007FFF
+
 .color-picker
   padding: 10px 10px 10px 40px
 .color-block
@@ -118,6 +87,20 @@ input, textarea
   height: 20px
   background: #000
   border-radius: $border-radius
+
+.picture-input
+  padding: 20px 10px 20px 60px
+.image-block
+  display: block
+  margin-top: -60px
+  margin-bottom: 20px
+  margin-left: 10px
+  width: 40px
+  height: 40px
+  background: #000
+  border-radius: $border-radius
+  background-size: cover
+  background-position: center center
 
 textarea
   height: 150px

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129091202) do
+ActiveRecord::Schema.define(version: 20170129135141) do
 
   create_table "invites", force: :cascade do |t|
     t.string   "header_title"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170129091202) do
     t.string   "header_image_content_type"
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
+    t.string   "bride_image_file_name"
+    t.string   "bride_image_content_type"
+    t.integer  "bride_image_file_size"
+    t.datetime "bride_image_updated_at"
+    t.string   "groom_image_file_name"
+    t.string   "groom_image_content_type"
+    t.integer  "groom_image_file_size"
+    t.datetime "groom_image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -33,8 +33,14 @@ export default class Editor extends React.Component {
       venue_description: this.props.invite.venue_description,
       venue_coordinates: this.props.invite.venue_coordinates,
       header_image: this.props.invite.header_image,
-      file: '',
-      imagePreviewUrl: this.props.header_image_url,
+      header_image_file: '',
+      header_image_url: this.props.header_image_url,
+      bride_image: this.props.invite.bride_image,
+      bride_image_file: '',
+      bride_image_url: this.props.bride_image_url,
+      groom_image: this.props.invite.groom_image,
+      groom_image_file: '',
+      groom_image_url: this.props.groom_image_url,
       menuToggle: 'hide',
       menuHome: '',
       menuEdit: 'hide',
@@ -110,7 +116,10 @@ export default class Editor extends React.Component {
     let file = e.target.files[0];
 
     reader.onloadend = () => {
-      if(styleProperty === 'header_image') this.setState({ file: file, imagePreviewUrl: reader.result })
+      if(styleProperty === 'header_image') this.setState({ header_image_file: file, header_image_url: reader.result })
+      if(styleProperty === 'bride_image') this.setState({ bride_image_file: file, bride_image_url: reader.result })
+      if(styleProperty === 'groom_image') this.setState({ groom_image_file: file, groom_image_url: reader.result })
+
     }
 
     reader.readAsDataURL(file)
@@ -187,7 +196,16 @@ export default class Editor extends React.Component {
               <label className="label-header">Home</label>
 
               <label>Header Image</label>
-              <input id="pictureInput" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <input className="picture-input" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.header_image_url + ")"}}></span>
+
+              <label>Bride Image</label>
+              <input className="picture-input" name="invite[bride_image]" type="file" data-style-property="bride_image" defaultValue={this.state.bride_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.bride_image_url + ")"}}></span>
+
+              <label>Grrom Image</label>
+              <input className="picture-input" name="invite[groom_image]" type="file" data-style-property="groom_image" defaultValue={this.state.groom_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.groom_image_url + ")"}}></span>
 
               <label>Primary Color</label>
               <input className="color-picker" name="invite[primary_color]" readOnly value={this.state.primary_color}/>
@@ -378,7 +396,9 @@ export default class Editor extends React.Component {
           venue_name={this.state.venue_name}
           venue_description={this.state.venue_description}
           venue_coordinates={this.state.venue_coordinates}
-          imagePreviewUrl={this.state.imagePreviewUrl}
+          header_image_url={this.state.header_image_url}
+          bride_image_url={this.state.bride_image_url}
+          groom_image_url={this.state.groom_image_url}
         />
 
       </div>
