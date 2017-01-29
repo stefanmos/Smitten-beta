@@ -23,6 +23,15 @@ export default class Editor extends React.Component {
       primary_font_letterspacing: this.props.primary_font_letterspacing + "px",
       secondary_font_letterspacing: this.props.secondary_font_letterspacing + "px",
       header_font_letterspacing: this.props.header_font_letterspacing + "px",
+      bride_name: this.props.bride_name,
+      bride_description: this.props.bride_description,
+      groom_name: this.props.groom_name,
+      groom_description: this.props.groom_description,
+      story_title: this.props.story_title,
+      story_description: this.props.story_description,
+      venue_name: this.props.venue_name,
+      venue_description: this.props.venue_description,
+      venue_coordinates: this.props.venue_coordinates,
       menuToggle: 'hide',
       menuHome: '',
       menuEdit: 'hide',
@@ -76,6 +85,15 @@ export default class Editor extends React.Component {
     if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue + "px" })
     if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue + "px" })
     if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue + "px" })
+    if(styleProperty === 'bride_name') this.setState({ bride_name: styleValue })
+    if(styleProperty === 'bride_description') this.setState({ bride_description: styleValue })
+    if(styleProperty === 'groom_name') this.setState({ groom_name: styleValue})
+    if(styleProperty === 'groom_description') this.setState({ groom_description: styleValue})
+    if(styleProperty === 'story_title') this.setState({ story_title: styleValue})
+    if(styleProperty === 'story_description') this.setState({ story_description: styleValue })
+    if(styleProperty === 'venue_name') this.setState({ venue_name: styleValue})
+    if(styleProperty === 'venue_description') this.setState({ venue_description: styleValue})
+    if(styleProperty === 'venue_coordinates') this.setState({ venue_coordinates: styleValue})
 
   }
 
@@ -148,35 +166,6 @@ export default class Editor extends React.Component {
 
             <div className={this.state.menuHome}>
               <label className="label-header">Home</label>
-            </div>
-
-            <div className={this.state.menuEdit}>
-              <label>Header Font Family</label>
-              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.props.header_font} onChange={this._handleChange.bind(this)}>
-                <option value="Didot">Didot</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Baskerville">Baskerville</option>
-                <option value="Courier">Courier</option>
-                <option value="Avenir">Avenir</option>
-              </select>
-
-              <label>Primary Font</label>
-              <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.props.primary_font} onChange={this._handleChange.bind(this)}>
-                <option value="Didot">Didot</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Baskerville">Baskerville</option>
-                <option value="Courier">Courier</option>
-                <option value="Avenir">Avenir</option>
-              </select>
-
-              <label>Secondary Font</label>
-              <select name="invite[secondary_font]" type="text" data-style-property="secondary_font" defaultValue={this.props.secondary_font} onChange={this._handleChange.bind(this)}>
-                <option value="Didot">Didot</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Baskerville">Baskerville</option>
-                <option value="Courier">Courier</option>
-                <option value="Avenir">Avenir</option>
-              </select>
 
               <label>Primary Color</label>
               <input className="color-picker" name="invite[primary_color]" readOnly value={this.state.primary_color}/>
@@ -198,22 +187,45 @@ export default class Editor extends React.Component {
               <input className="color-picker" name="invite[secondary_background_color]" readOnly value={this.state.secondary_background_color}/>
               <span className="color-block"><ColorPicker color={this.state.secondary_background_color} update={this._handleSecondaryBackgroundColor.bind(this)}/></span>
 
+            </div>
+
+            <div className={this.state.menuEdit}>
+              <label>Header Font Family</label>
+              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.props.header_font} onChange={this._handleChange.bind(this)}>
+                <option value="Didot">Didot</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Courier">Courier</option>
+                <option value="Avenir">Avenir</option>
+                <option value="Oswald">Oswald</option>
+              </select>
+
               <label>Header Font Size</label>
               <span className="input-slider">
                 <label>{this.state.header_font_size}</label>
                 <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.props.header_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
-              <label>Secondary Font Size</label>
+              <label>Header Font Letterspacing</label>
+              <span className="input-slider">
+                <label>{this.state.header_font_letterspacing}</label>
+                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.props.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+              </span>
+
+              <label>Primary Font</label>
+              <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.props.primary_font} onChange={this._handleChange.bind(this)}>
+                <option value="Didot">Didot</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Courier">Courier</option>
+                <option value="Avenir">Avenir</option>
+                <option value="Oswald">Oswald</option>
+              </select>
+
+              <label>Primary Font Size</label>
               <span className="input-slider">
                 <label>{this.state.primary_font_size}</label>
                 <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.props.primary_font_size} onChange={this._handleChange.bind(this)}/>
-              </span>
-
-              <label>Secondary Font Size</label>
-              <span className="input-slider">
-                <label>{this.state.secondary_font_size}</label>
-                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.props.secondary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Primary Font Letterspacing</label>
@@ -222,16 +234,26 @@ export default class Editor extends React.Component {
                 <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="-4" max="150" defaultValue={this.props.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
+              <label>Secondary Font</label>
+              <select name="invite[secondary_font]" type="text" data-style-property="secondary_font" defaultValue={this.props.secondary_font} onChange={this._handleChange.bind(this)}>
+                <option value="Didot">Didot</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Courier">Courier</option>
+                <option value="Avenir">Avenir</option>
+                <option value="Oswald">Oswald</option>
+              </select>
+
+              <label>Secondary Font Size</label>
+              <span className="input-slider">
+                <label>{this.state.secondary_font_size}</label>
+                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.props.secondary_font_size} onChange={this._handleChange.bind(this)}/>
+              </span>
+
               <label>Secondary Font Letterspacing</label>
               <span className="input-slider">
                 <label>{this.state.secondary_font_letterspacing}</label>
                 <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="-4" max="150" defaultValue={this.props.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
-              </span>
-
-              <label>Header Font Letterspacing</label>
-              <span className="input-slider">
-                <label>{this.state.header_font_letterspacing}</label>
-                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.props.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
             </div>
@@ -247,6 +269,34 @@ export default class Editor extends React.Component {
 
             <div className={this.state.menuStory}>
               <label>Story</label>
+
+              <label>Bride Name</label>
+              <input name="invite[bride_name]" type="text" data-style-property="bride_name" defaultValue={this.props.bride_name} onChange={this._handleChange.bind(this)}/>
+
+              <label>Bride Description</label>
+              <textarea name="invite[bride_description]" type="text" data-style-property="bride_description" defaultValue={this.props.bride_description} onChange={this._handleChange.bind(this)}/>
+
+              <label>Groom Name</label>
+              <input name="invite[groom_name]" type="text" data-style-property="groom_name" defaultValue={this.props.groom_name} onChange={this._handleChange.bind(this)}/>
+
+              <label>Groom Description</label>
+              <textarea name="invite[groom_description]" type="text" data-style-property="groom_description" defaultValue={this.props.groom_description} onChange={this._handleChange.bind(this)}/>
+
+              <label>Story Title</label>
+              <input name="invite[story_title]" type="text" data-style-property="story_title" defaultValue={this.props.story_title} onChange={this._handleChange.bind(this)}/>
+
+              <label>Story Description</label>
+              <textarea name="invite[story_description]" type="text" data-style-property="story_description" defaultValue={this.props.story_description} onChange={this._handleChange.bind(this)}/>
+
+              <label>Venue Name</label>
+              <input name="invite[venue_name]" type="text" data-style-property="venue_name" defaultValue={this.props.venue_name} onChange={this._handleChange.bind(this)}/>
+
+              <label>Venue Description</label>
+              <textarea name="invite[venue_description]" type="text" data-style-property="venue_description" defaultValue={this.props.venue_description} onChange={this._handleChange.bind(this)}/>
+
+              <label>Venue Coordinates</label>
+              <input name="invite[venue_coordinates]" type="text" data-style-property="venue_coordinates" defaultValue={this.props.venue_coordinates} onChange={this._handleChange.bind(this)}/>
+
             </div>
 
             <div className={this.state.menuGallery}>
@@ -297,6 +347,15 @@ export default class Editor extends React.Component {
           primary_font_letterspacing={this.state.primary_font_letterspacing}
           secondary_font_letterspacing={this.state.secondary_font_letterspacing}
           header_font_letterspacing={this.state.header_font_letterspacing}
+          bride_name={this.state.bride_name}
+          bride_description={this.state.bride_description}
+          groom_name={this.state.groom_name}
+          groom_description={this.state.groom_description}
+          story_title={this.state.story_title}
+          story_description={this.state.story_description}
+          venue_name={this.state.venue_name}
+          venue_description={this.state.venue_description}
+          venue_coordinates={this.state.venue_coordinates}
         />
 
       </div>
