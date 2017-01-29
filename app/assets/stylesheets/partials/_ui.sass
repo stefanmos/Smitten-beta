@@ -52,6 +52,25 @@ nav
     background: #FFF
     color: #000
 
+.button-md
+  display: inline-block
+  border: 1px solid #000
+  border-radius: $border-radius
+  text-align: center
+  background: none
+  font-size: 10rem
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  padding: 15px 20px
+  margin: 13px 0
+  font-weight: 500
+  cursor: pointer
+  color: #000
+  +transition(.5s)
+  &:hover
+    background: #000
+    color: #FFF
+
 .button-left
   @extend .button
   float: left

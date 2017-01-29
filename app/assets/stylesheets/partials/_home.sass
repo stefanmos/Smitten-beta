@@ -3,18 +3,28 @@
 // Custom SASS
 
 .header
-  background: #FFB9B9
+  background: #FFE5D4
   text-align: center
   padding-top: 15vh
+  h1
+    font-size: 30rem
+    letter-spacing: 4rem
+    font-weight: 500
   img
     margin-top: 10vh
+    margin-bottom: -2px
+    width: 100%
+
+#header-logo
+  width: 100px
 
 .customize
   background: #313131
   color: #FFF
   text-align: center
+  padding-top: 10vh
   img
-    margin-bottom: -40px
+    margin-bottom: -42px
   .options
     text-align: left
 
@@ -23,7 +33,7 @@
   border-radius: 4px
   @include transition(.3s)
   h5
-    color: #FFB9B9
+    color: #969696
   &:hover
     background: #272727
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.10)
@@ -32,6 +42,7 @@
   background: #222222
   color: #FFF
   text-align: center
+  padding: 10vh
   .showcase
     width: 100%
     height: 200px
@@ -43,6 +54,7 @@
   background: #222222
   color: #FFF
   text-align: center
+  padding-bottom: 10vh
   .column-4-12
     padding: 10px
     &:last-child
@@ -63,3 +75,7 @@
       &:hover
         @include transition(.3s)
         box-shadow: 0 12px 20px 0 rgba(0,0,0,0.30)
+
+.footer
+  img
+    width: 200px
