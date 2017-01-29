@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
 
 class ColorPicker extends React.Component {
@@ -19,7 +20,7 @@ class ColorPicker extends React.Component {
 
   render() {
 
-    const styles = ({
+    const styles = reactCSS({
       'default': {
         color: {
           width: '20px',
