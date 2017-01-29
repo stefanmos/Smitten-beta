@@ -1,4 +1,4 @@
-<div class="grid">
+<!-- <div class="grid">
 
   <h1>Editing Invite</h1>
 
@@ -7,6 +7,6 @@
   <%= link_to 'Show', @invite %> |
   <%= link_to 'Back', invites_path %>
 
-</div>
+</div> -->
 
 <%= react_component("Editor", props: {invite: @invite, header_image_url: @invite.header_image.url, bride_image_url: @invite.bride_image.url, groom_image_url: @invite.groom_image.url}) %>
