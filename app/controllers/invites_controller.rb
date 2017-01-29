@@ -70,6 +70,6 @@ class InvitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invite_params
-      params.require(:invite).permit(:header_title, :wedding_date, :primary_color, :secondary_color, :header_color, :primary_background_color, :secondary_background_color, :header_font, :primary_font, :secondary_font, :header_font_size, :primary_font_size, :secondary_font_size, :primary_font_letterspacing, :secondary_font_letterspacing, :header_font_letterspacing, :bride_name, :bride_description, :groom_name, :groom_description, :story_title, :story_description, :venue_name, :venue_description, :venue_coordinates)
+      params.require(:invite).permit(:header_title, :wedding_date, :primary_color, :secondary_color, :header_color, :primary_background_color, :secondary_background_color, :header_font, :primary_font, :secondary_font, :header_font_size, :primary_font_size, :secondary_font_size, :primary_font_letterspacing, :secondary_font_letterspacing, :header_font_letterspacing, :bride_name, :bride_description, :groom_name, :groom_description, :story_title, :story_description, :venue_name, :venue_description, :venue_coordinates, :header_image)
     end
 end

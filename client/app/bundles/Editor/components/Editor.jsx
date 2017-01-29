@@ -6,32 +6,35 @@ export default class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      props: this.props,
-      header_title: this.props.header_title,
-      wedding_date: this.props.wedding_date,
-      primary_color: this.props.primary_color,
-      secondary_color: this.props.secondary_color,
-      header_color: this.props.header_color,
-      primary_background_color: this.props.primary_background_color,
-      secondary_background_color: this.props.secondary_background_color,
-      header_font: this.props.header_font,
-      primary_font: this.props.primary_font,
-      secondary_font: this.props.secondary_font,
-      header_font_size: this.props.header_font_size + "px",
-      primary_font_size: this.props.primary_font_size + "px",
-      secondary_font_size: this.props.secondary_font_size + "px",
-      primary_font_letterspacing: this.props.primary_font_letterspacing + "px",
-      secondary_font_letterspacing: this.props.secondary_font_letterspacing + "px",
-      header_font_letterspacing: this.props.header_font_letterspacing + "px",
-      bride_name: this.props.bride_name,
-      bride_description: this.props.bride_description,
-      groom_name: this.props.groom_name,
-      groom_description: this.props.groom_description,
-      story_title: this.props.story_title,
-      story_description: this.props.story_description,
-      venue_name: this.props.venue_name,
-      venue_description: this.props.venue_description,
-      venue_coordinates: this.props.venue_coordinates,
+      props: this.props.invite,
+      header_title: this.props.invite.header_title,
+      wedding_date: this.props.invite.wedding_date,
+      primary_color: this.props.invite.primary_color,
+      secondary_color: this.props.invite.secondary_color,
+      header_color: this.props.invite.header_color,
+      primary_background_color: this.props.invite.primary_background_color,
+      secondary_background_color: this.props.invite.secondary_background_color,
+      header_font: this.props.invite.header_font,
+      primary_font: this.props.invite.primary_font,
+      secondary_font: this.props.invite.secondary_font,
+      header_font_size: this.props.invite.header_font_size + "px",
+      primary_font_size: this.props.invite.primary_font_size + "px",
+      secondary_font_size: this.props.invite.secondary_font_size + "px",
+      primary_font_letterspacing: this.props.invite.primary_font_letterspacing + "px",
+      secondary_font_letterspacing: this.props.invite.secondary_font_letterspacing + "px",
+      header_font_letterspacing: this.props.invite.header_font_letterspacing + "px",
+      bride_name: this.props.invite.bride_name,
+      bride_description: this.props.invite.bride_description,
+      groom_name: this.props.invite.groom_name,
+      groom_description: this.props.invite.groom_description,
+      story_title: this.props.invite.story_title,
+      story_description: this.props.invite.story_description,
+      venue_name: this.props.invite.venue_name,
+      venue_description: this.props.invite.venue_description,
+      venue_coordinates: this.props.invite.venue_coordinates,
+      header_image: this.props.invite.header_image,
+      file: '',
+      imagePreviewUrl: this.props.header_image_url,
       menuToggle: 'hide',
       menuHome: '',
       menuEdit: 'hide',
@@ -54,7 +57,7 @@ export default class Editor extends React.Component {
     var formData = new FormData(fd);
 
     $.ajax({
-       url: ("/invites/" + this.props.id),
+       url: ("/invites/" + this.props.invite.id),
        type: 'PUT',
        data: formData,
        dataType: 'json',
@@ -95,6 +98,22 @@ export default class Editor extends React.Component {
     if(styleProperty === 'venue_description') this.setState({ venue_description: styleValue})
     if(styleProperty === 'venue_coordinates') this.setState({ venue_coordinates: styleValue})
 
+  }
+
+
+  _handleImageChange(e) {
+    e.preventDefault();
+
+    var styleProperty = e.target.getAttribute('data-style-property')
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      if(styleProperty === 'header_image') this.setState({ file: file, imagePreviewUrl: reader.result })
+    }
+
+    reader.readAsDataURL(file)
   }
 
   _handlePrimaryColor = (color) => {this.setState({ primary_color: color.hex })}
@@ -161,11 +180,14 @@ export default class Editor extends React.Component {
 
             <div className="save">
               <a className="button" type="submit" onClick={(e)=>this._handleSubmit(e)}>Save</a>
-              <a className="button" href={"/invites/" + this.props.id}>View</a>
+              <a className="button" href={"/invites/" + this.props.invite.id}>View</a>
             </div>
 
             <div className={this.state.menuHome}>
               <label className="label-header">Home</label>
+
+              <label>Header Image</label>
+              <input id="pictureInput" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
 
               <label>Primary Color</label>
               <input className="color-picker" name="invite[primary_color]" readOnly value={this.state.primary_color}/>
@@ -191,7 +213,7 @@ export default class Editor extends React.Component {
 
             <div className={this.state.menuEdit}>
               <label>Header Font Family</label>
-              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.props.header_font} onChange={this._handleChange.bind(this)}>
+              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.state.header_font} onChange={this._handleChange.bind(this)}>
                 <option value="Didot">Didot</option>
                 <option value="Helvetica">Helvetica</option>
                 <option value="Baskerville">Baskerville</option>
@@ -203,17 +225,17 @@ export default class Editor extends React.Component {
               <label>Header Font Size</label>
               <span className="input-slider">
                 <label>{this.state.header_font_size}</label>
-                <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.props.header_font_size} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.state.header_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Header Font Letterspacing</label>
               <span className="input-slider">
                 <label>{this.state.header_font_letterspacing}</label>
-                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.props.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.state.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Primary Font</label>
-              <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.props.primary_font} onChange={this._handleChange.bind(this)}>
+              <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.state.primary_font} onChange={this._handleChange.bind(this)}>
                 <option value="Didot">Didot</option>
                 <option value="Helvetica">Helvetica</option>
                 <option value="Baskerville">Baskerville</option>
@@ -225,17 +247,17 @@ export default class Editor extends React.Component {
               <label>Primary Font Size</label>
               <span className="input-slider">
                 <label>{this.state.primary_font_size}</label>
-                <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.props.primary_font_size} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.state.primary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Primary Font Letterspacing</label>
               <span className="input-slider">
                 <label>{this.state.primary_font_letterspacing}</label>
-                <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="-4" max="150" defaultValue={this.props.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="-4" max="150" defaultValue={this.state.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font</label>
-              <select name="invite[secondary_font]" type="text" data-style-property="secondary_font" defaultValue={this.props.secondary_font} onChange={this._handleChange.bind(this)}>
+              <select name="invite[secondary_font]" type="text" data-style-property="secondary_font" defaultValue={this.state.secondary_font} onChange={this._handleChange.bind(this)}>
                 <option value="Didot">Didot</option>
                 <option value="Helvetica">Helvetica</option>
                 <option value="Baskerville">Baskerville</option>
@@ -247,13 +269,13 @@ export default class Editor extends React.Component {
               <label>Secondary Font Size</label>
               <span className="input-slider">
                 <label>{this.state.secondary_font_size}</label>
-                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.props.secondary_font_size} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.state.secondary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font Letterspacing</label>
               <span className="input-slider">
                 <label>{this.state.secondary_font_letterspacing}</label>
-                <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="-4" max="150" defaultValue={this.props.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="-4" max="150" defaultValue={this.state.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
             </div>
@@ -261,41 +283,41 @@ export default class Editor extends React.Component {
 
             <div className={this.state.menuHeader}>
               <label>Header Title</label>
-              <input name="invite[header_title]" type="text" data-style-property="header_title" defaultValue={this.props.header_title} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[header_title]" type="text" data-style-property="header_title" defaultValue={this.state.header_title} onChange={this._handleChange.bind(this)}/>
 
               <label>Wedding Date</label>
-              <input name="invite[wedding_date]" type="text" data-style-property="wedding_date" defaultValue={this.props.wedding_date} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[wedding_date]" type="text" data-style-property="wedding_date" defaultValue={this.state.wedding_date} onChange={this._handleChange.bind(this)}/>
             </div>
 
             <div className={this.state.menuStory}>
               <label>Story</label>
 
               <label>Bride Name</label>
-              <input name="invite[bride_name]" type="text" data-style-property="bride_name" defaultValue={this.props.bride_name} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[bride_name]" type="text" data-style-property="bride_name" defaultValue={this.state.bride_name} onChange={this._handleChange.bind(this)}/>
 
               <label>Bride Description</label>
-              <textarea name="invite[bride_description]" type="text" data-style-property="bride_description" defaultValue={this.props.bride_description} onChange={this._handleChange.bind(this)}/>
+              <textarea name="invite[bride_description]" type="text" data-style-property="bride_description" defaultValue={this.state.bride_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Groom Name</label>
-              <input name="invite[groom_name]" type="text" data-style-property="groom_name" defaultValue={this.props.groom_name} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[groom_name]" type="text" data-style-property="groom_name" defaultValue={this.state.groom_name} onChange={this._handleChange.bind(this)}/>
 
               <label>Groom Description</label>
-              <textarea name="invite[groom_description]" type="text" data-style-property="groom_description" defaultValue={this.props.groom_description} onChange={this._handleChange.bind(this)}/>
+              <textarea name="invite[groom_description]" type="text" data-style-property="groom_description" defaultValue={this.state.groom_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Story Title</label>
-              <input name="invite[story_title]" type="text" data-style-property="story_title" defaultValue={this.props.story_title} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[story_title]" type="text" data-style-property="story_title" defaultValue={this.state.story_title} onChange={this._handleChange.bind(this)}/>
 
               <label>Story Description</label>
-              <textarea name="invite[story_description]" type="text" data-style-property="story_description" defaultValue={this.props.story_description} onChange={this._handleChange.bind(this)}/>
+              <textarea name="invite[story_description]" type="text" data-style-property="story_description" defaultValue={this.state.story_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Venue Name</label>
-              <input name="invite[venue_name]" type="text" data-style-property="venue_name" defaultValue={this.props.venue_name} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[venue_name]" type="text" data-style-property="venue_name" defaultValue={this.state.venue_name} onChange={this._handleChange.bind(this)}/>
 
               <label>Venue Description</label>
-              <textarea name="invite[venue_description]" type="text" data-style-property="venue_description" defaultValue={this.props.venue_description} onChange={this._handleChange.bind(this)}/>
+              <textarea name="invite[venue_description]" type="text" data-style-property="venue_description" defaultValue={this.state.venue_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Venue Coordinates</label>
-              <input name="invite[venue_coordinates]" type="text" data-style-property="venue_coordinates" defaultValue={this.props.venue_coordinates} onChange={this._handleChange.bind(this)}/>
+              <input name="invite[venue_coordinates]" type="text" data-style-property="venue_coordinates" defaultValue={this.state.venue_coordinates} onChange={this._handleChange.bind(this)}/>
 
             </div>
 
@@ -356,6 +378,7 @@ export default class Editor extends React.Component {
           venue_name={this.state.venue_name}
           venue_description={this.state.venue_description}
           venue_coordinates={this.state.venue_coordinates}
+          imagePreviewUrl={this.state.imagePreviewUrl}
         />
 
       </div>

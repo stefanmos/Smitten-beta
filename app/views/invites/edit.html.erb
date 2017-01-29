@@ -9,4 +9,4 @@
 
 </div> -->
 
-<%= react_component("Editor", props: @invite, prerender: false) %>
+<%= react_component("Editor", props: {invite: @invite, header_image_url: @invite.header_image.url,}) %>

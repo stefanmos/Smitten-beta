@@ -6,6 +6,7 @@ export default class Preview extends React.Component {
     var styles = {
     header: {
       backgroundColor: this.props.header_color,
+      backgroundImage: "url(" + this.props.imagePreviewUrl + ")",
       backgroundSize: "cover",
       backgroundPosition: "center center",
       color: this.props.primary_color,
@@ -34,7 +35,7 @@ export default class Preview extends React.Component {
         <div style={styles.header}>
           <h1 style={{fontFamily: this.props.header_font, lineHeight: this.props.header_font_size, letterSpacing: this.props.header_font_letterspacing, fontSize: this.props.header_font_size}} >{this.props.header_title}</h1>
           <hr style={{borderColor: this.props.primary_color}}></hr>
-          <h4 style={{textTransform: "uppercase", fontWeight: "500"}}>Is getting married {this.props.wedding_date}</h4>
+          <h4 style={{textTransform: "uppercase", fontWeight: "500"}}>will be getting married {this.props.wedding_date}</h4>
 
             {this.props.wedding_date}<br></br>
             {this.props.primary_color}<br></br>
