@@ -238,6 +238,7 @@ export default class Editor extends React.Component {
                 <option value="Courier">Courier</option>
                 <option value="Avenir">Avenir</option>
                 <option value="Oswald">Oswald</option>
+                <option value="Rubik">Rubik</option>
               </select>
 
               <label>Header Font Size</label>
@@ -260,6 +261,7 @@ export default class Editor extends React.Component {
                 <option value="Courier">Courier</option>
                 <option value="Avenir">Avenir</option>
                 <option value="Oswald">Oswald</option>
+                <option value="Rubik">Rubik</option>
               </select>
 
               <label>Primary Font Size</label>
@@ -282,6 +284,7 @@ export default class Editor extends React.Component {
                 <option value="Courier">Courier</option>
                 <option value="Avenir">Avenir</option>
                 <option value="Oswald">Oswald</option>
+                <option value="Rubik">Rubik</option>
               </select>
 
               <label>Secondary Font Size</label>
