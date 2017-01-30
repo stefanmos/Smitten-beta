@@ -44,11 +44,36 @@ export default class Preview extends React.Component {
       backgroundSize: "cover",
       backgroundImage: "url(" + this.props.groom_image_url + ")",
       margin: "auto",
+    },
+    bridesmaidsgroomsmen_profile: {
+      display: "block",
+      width: 120,
+      height: 120,
+      borderRadius: 120,
+      backgroundSize: "cover",
+      backgroundColor: "gray",
+      margin: "auto",
+    },
+    venue: {
+      backgroundColor: this.props.primary_background_color,
+      padding: "10vh 5%",
+      textAlign: "center",
+      fontFamily: this.props.primary_font,
+      color: this.props.secondary_color,
+    },
+    rsvp: {
+      backgroundColor: this.props.secondary_background_color,
+      padding: "10vh 20%",
+      textAlign: "center",
+      fontFamily: this.props.primary_font,
+      color: this.props.primary_color,
     }
 }
     return (
 
       <div id="preview">
+
+        <div id="invite">
 
         <div style={styles.header}>
           <h1 style={{fontFamily: this.props.header_font, letterSpacing: this.props.header_font_letterspacing, fontSize: this.props.header_font_size}} >{this.props.header_title}</h1>
@@ -101,7 +126,59 @@ export default class Preview extends React.Component {
         </div>
 
         <div style={styles.bridesmaidsGroomsmen}>
+
           <h1>BRIDESMAIDS & GROOMSMEN</h1>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+            <div className="column-2-12">
+              <div style={styles.bridesmaidsgroomsmen_profile}></div>
+            </div>
+
+            <div className="clearfix"></div>
+
+        </div>
+
+        <div style={styles.venue}>
+          <h1>VENUE</h1>
+
+          <h3>{this.props.venue_name}</h3>
+          <p>{this.props.venue_description}</p>
+          <p>{this.props.venue_coordinates}</p>
+
+        </div>
+
+        <div style={styles.rsvp}>
+          <h1>RSVP</h1>
+
+          <label>Name</label>
+          <input disabled type="text" placeholder="Name"/>
+
+          <label>Email</label>
+          <input disabled type="text" placeholder="Email"/>
+
+          <label>Tel</label>
+          <input disabled type="text" placeholder="Tel"/>
+
+          <label>Attending?</label>
+          <input disabled type="text" placeholder="Yes"/>
+
+          <a className="button-md">RSVP</a>
+
+        </div>
+
         </div>
 
       </div>

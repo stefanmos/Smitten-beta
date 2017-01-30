@@ -17,12 +17,12 @@ export default class Editor extends React.Component {
       header_font: this.props.invite.header_font,
       primary_font: this.props.invite.primary_font,
       secondary_font: this.props.invite.secondary_font,
-      header_font_size: this.props.invite.header_font_size + "px",
-      primary_font_size: this.props.invite.primary_font_size + "px",
-      secondary_font_size: this.props.invite.secondary_font_size + "px",
-      primary_font_letterspacing: this.props.invite.primary_font_letterspacing + "px",
-      secondary_font_letterspacing: this.props.invite.secondary_font_letterspacing + "px",
-      header_font_letterspacing: this.props.invite.header_font_letterspacing + "px",
+      header_font_size: this.props.invite.header_font_size,
+      primary_font_size: this.props.invite.primary_font_size,
+      secondary_font_size: this.props.invite.secondary_font_size,
+      primary_font_letterspacing: this.props.invite.primary_font_letterspacing,
+      secondary_font_letterspacing: this.props.invite.secondary_font_letterspacing,
+      header_font_letterspacing: this.props.invite.header_font_letterspacing,
       bride_name: this.props.invite.bride_name,
       bride_description: this.props.invite.bride_description,
       groom_name: this.props.invite.groom_name,
@@ -88,12 +88,12 @@ export default class Editor extends React.Component {
     if(styleProperty === 'header_font') this.setState({ header_font: styleValue })
     if(styleProperty === 'primary_font') this.setState({ primary_font: styleValue })
     if(styleProperty === 'secondary_font') this.setState({ secondary_font: styleValue })
-    if(styleProperty === 'header_font_size') this.setState({ header_font_size: styleValue + "px" })
-    if(styleProperty === 'primary_font_size') this.setState({ primary_font_size: styleValue + "px" })
+    if(styleProperty === 'header_font_size') this.setState({ header_font_size: styleValue })
+    if(styleProperty === 'primary_font_size') this.setState({ primary_font_size: styleValue })
     if(styleProperty === 'secondary_font_size') this.setState({ secondary_font_size: styleValue })
-    if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue + "px" })
-    if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue + "px" })
-    if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue + "px" })
+    if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue })
+    if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue })
+    if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue })
     if(styleProperty === 'bride_name') this.setState({ bride_name: styleValue })
     if(styleProperty === 'bride_description') this.setState({ bride_description: styleValue })
     if(styleProperty === 'groom_name') this.setState({ groom_name: styleValue})
@@ -119,7 +119,6 @@ export default class Editor extends React.Component {
       if(styleProperty === 'header_image') this.setState({ header_image_file: file, header_image_url: reader.result })
       if(styleProperty === 'bride_image') this.setState({ bride_image_file: file, bride_image_url: reader.result })
       if(styleProperty === 'groom_image') this.setState({ groom_image_file: file, groom_image_url: reader.result })
-
     }
 
     reader.readAsDataURL(file)
@@ -194,18 +193,9 @@ export default class Editor extends React.Component {
 
             <div className={this.state.menuHome}>
               <label className="label-header">Home</label>
+            </div>
 
-              <label>Header Image</label>
-              <input className="picture-input" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
-              <span className="image-block" style={{backgroundImage: "url(" + this.state.header_image_url + ")"}}></span>
-
-              <label>Bride Image</label>
-              <input className="picture-input" name="invite[bride_image]" type="file" data-style-property="bride_image" defaultValue={this.state.bride_image} onChange={(e)=>this._handleImageChange(e)}/>
-              <span className="image-block" style={{backgroundImage: "url(" + this.state.bride_image_url + ")"}}></span>
-
-              <label>Grrom Image</label>
-              <input className="picture-input" name="invite[groom_image]" type="file" data-style-property="groom_image" defaultValue={this.state.groom_image} onChange={(e)=>this._handleImageChange(e)}/>
-              <span className="image-block" style={{backgroundImage: "url(" + this.state.groom_image_url + ")"}}></span>
+            <div className={this.state.menuEdit}>
 
               <label>Primary Color</label>
               <input className="color-picker" name="invite[primary_color]" readOnly value={this.state.primary_color}/>
@@ -215,45 +205,15 @@ export default class Editor extends React.Component {
               <input className="color-picker" name="invite[secondary_color]" readOnly value={this.state.secondary_color}/>
               <span className="color-block"><ColorPicker color={this.state.secondary_color} update={this._handleSecondaryColor.bind(this)}/></span>
 
-              <label>Header Color</label>
-              <input className="color-picker" name="invite[header_color]" readOnly value={this.state.header_color}/>
-              <span className="color-block"><ColorPicker color={this.state.header_color} update={this._handleHeaderColor.bind(this)}/></span>
-
-              <label>Primary Color</label>
+              <label>Primary Background Color</label>
               <input className="color-picker" name="invite[primary_background_color]" readOnly value={this.state.primary_background_color}/>
               <span className="color-block"><ColorPicker color={this.state.primary_background_color} update={this._handlePrimaryBackgroundColor.bind(this)}/></span>
 
-              <label>Primary Color</label>
+              <label>Secondary Background Font</label>
               <input className="color-picker" name="invite[secondary_background_color]" readOnly value={this.state.secondary_background_color}/>
               <span className="color-block"><ColorPicker color={this.state.secondary_background_color} update={this._handleSecondaryBackgroundColor.bind(this)}/></span>
 
-            </div>
-
-            <div className={this.state.menuEdit}>
-              <label>Header Font Family</label>
-              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.state.header_font} onChange={this._handleChange.bind(this)}>
-                <option value="Didot">Didot</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Baskerville">Baskerville</option>
-                <option value="Courier">Courier</option>
-                <option value="Avenir">Avenir</option>
-                <option value="Oswald">Oswald</option>
-                <option value="Rubik">Rubik</option>
-              </select>
-
-              <label>Header Font Size</label>
-              <span className="input-slider">
-                <label>{this.state.header_font_size}</label>
-                <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.state.header_font_size} onChange={this._handleChange.bind(this)}/>
-              </span>
-
-              <label>Header Font Letterspacing</label>
-              <span className="input-slider">
-                <label>{this.state.header_font_letterspacing}</label>
-                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.state.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
-              </span>
-
-              <label>Primary Font</label>
+              <label>Secondary Background Font</label>
               <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.state.primary_font} onChange={this._handleChange.bind(this)}>
                 <option value="Didot">Didot</option>
                 <option value="Helvetica">Helvetica</option>
@@ -308,6 +268,38 @@ export default class Editor extends React.Component {
 
               <label>Wedding Date</label>
               <input name="invite[wedding_date]" type="text" data-style-property="wedding_date" defaultValue={this.state.wedding_date} onChange={this._handleChange.bind(this)}/>
+
+              <label>Header Color</label>
+              <input className="color-picker" name="invite[header_color]" readOnly value={this.state.header_color}/>
+              <span className="color-block"><ColorPicker color={this.state.header_color} update={this._handleHeaderColor.bind(this)}/></span>
+
+              <label>Header Image</label>
+              <input className="picture-input" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.header_image_url + ")"}}></span>
+
+              <label>Header Font Family</label>
+              <select name="invite[header_font]" type="text" data-style-property="header_font" defaultValue={this.state.header_font} onChange={this._handleChange.bind(this)}>
+                <option value="Didot">Didot</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Courier">Courier</option>
+                <option value="Avenir">Avenir</option>
+                <option value="Oswald">Oswald</option>
+                <option value="Rubik">Rubik</option>
+              </select>
+
+              <label>Header Font Size</label>
+              <span className="input-slider">
+                <label>{this.state.header_font_size}</label>
+                <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.state.header_font_size} onChange={this._handleChange.bind(this)}/>
+              </span>
+
+              <label>Header Font Letterspacing</label>
+              <span className="input-slider">
+                <label>{this.state.header_font_letterspacing}</label>
+                <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.state.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
+              </span>
+
             </div>
 
             <div className={this.state.menuStory}>
@@ -319,17 +311,91 @@ export default class Editor extends React.Component {
               <label>Bride Description</label>
               <textarea name="invite[bride_description]" type="text" data-style-property="bride_description" defaultValue={this.state.bride_description} onChange={this._handleChange.bind(this)}/>
 
+              <label>Bride Image</label>
+              <input className="picture-input" name="invite[bride_image]" type="file" data-style-property="bride_image" defaultValue={this.state.bride_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.bride_image_url + ")"}}></span>
+
               <label>Groom Name</label>
               <input name="invite[groom_name]" type="text" data-style-property="groom_name" defaultValue={this.state.groom_name} onChange={this._handleChange.bind(this)}/>
 
               <label>Groom Description</label>
               <textarea name="invite[groom_description]" type="text" data-style-property="groom_description" defaultValue={this.state.groom_description} onChange={this._handleChange.bind(this)}/>
 
+              <label>Groom Image</label>
+              <input className="picture-input" name="invite[groom_image]" type="file" data-style-property="groom_image" defaultValue={this.state.groom_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <span className="image-block" style={{backgroundImage: "url(" + this.state.groom_image_url + ")"}}></span>
+
               <label>Story Title</label>
               <input name="invite[story_title]" type="text" data-style-property="story_title" defaultValue={this.state.story_title} onChange={this._handleChange.bind(this)}/>
 
               <label>Story Description</label>
               <textarea name="invite[story_description]" type="text" data-style-property="story_description" defaultValue={this.state.story_description} onChange={this._handleChange.bind(this)}/>
+
+            </div>
+
+            <div className={this.state.menuGallery}>
+              <label>Gallery</label>
+
+              <label>Gallery Image</label>
+              <input className="picture-input" type="file" />
+              <span className="image-block"></span>
+
+              <label>Gallery Image</label>
+              <input className="picture-input" type="file" />
+              <span className="image-block"></span>
+
+              <label>Gallery Image</label>
+              <input className="picture-input" type="file" />
+              <span className="image-block"></span>
+
+              <a className="button">Add +</a>
+            </div>
+
+            <div className={this.state.menuBrGr}>
+              <label>BRIDESMAIDS & GROOMSMEN</label> <br/><br/>
+
+              <label>Bridesmaid Name</label>
+              <input type="text"/>
+              <label>Bridesmaid Image</label>
+              <input className="picture-input" type="file" />
+              <span className="image-block"></span>
+
+              <label>Groomsmen Name</label>
+              <input type="text"/>
+              <label>Groomsmen Image</label>
+              <input className="picture-input" type="file" />
+              <span className="image-block"></span>
+
+              <a className="button">Add +</a>
+
+            </div>
+
+            <div className={this.state.menuMenu}>
+              <label>Menu</label>
+
+              <label>Item</label>
+              <input type="text" placeholder="Item"/>
+
+              <label>Description</label>
+              <input type="text" placeholder="Description"/>
+
+              <a className="button">Add +</a>
+            </div>
+
+            <div className={this.state.menuScedule}>
+              <label>SCHEDULE</label> <br/><br/>
+
+              <label>Item</label>
+              <input type="text" placeholder="Reception"/>
+
+              <label>Time</label>
+              <input type="text" placeholder="10h00"/>
+
+              <a className="button">Add +</a>
+            </div>
+
+            <div className={this.state.menuVenue}>
+              <label>VENUE</label> <br/><br/>
 
               <label>Venue Name</label>
               <input name="invite[venue_name]" type="text" data-style-property="venue_name" defaultValue={this.state.venue_name} onChange={this._handleChange.bind(this)}/>
@@ -342,32 +408,23 @@ export default class Editor extends React.Component {
 
             </div>
 
-            <div className={this.state.menuGallery}>
-              <label>Gallery</label>
-            </div>
-
-            <div className={this.state.menuBrGr}>
-              <label>Bridesmaids & Groomsmen</label>
-            </div>
-
-            <div className={this.state.menuMenu}>
-              <label>Menu</label>
-            </div>
-
-            <div className={this.state.menuScedule}>
-              <label>Scedule</label>
-            </div>
-
-            <div className={this.state.menuVenue}>
-              <label>Venue</label>
-            </div>
-
             <div className={this.state.menuRSVP}>
-              <label>RSVP Password (Guest Security Code)</label>
+
+              <label>RSVP Password <br/>(Guest Security Code eg: 8956)</label>
+              <input type="text" placeholder="Security Code"/>
+
             </div>
 
             <div className={this.state.menuGiftReg}>
-              <label>Gift Registry</label>
+              <label>GIFT REGISTRY</label> <br/><br/>
+
+              <label>Registry Name</label>
+              <input disabled type="text" placeholder="Registry Name"/>
+
+              <label>Registry Link</label>
+              <input disabled type="text" placeholder="Registry Link"/>
+
+              <a className="button">Add +</a>
             </div>
 
           </form>
