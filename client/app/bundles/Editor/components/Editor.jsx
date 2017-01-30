@@ -274,7 +274,7 @@ export default class Editor extends React.Component {
               <span className="color-block"><ColorPicker color={this.state.header_color} update={this._handleHeaderColor.bind(this)}/></span>
 
               <label>Header Image</label>
-              <input className="picture-input" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <input className="picture-input custom-file-input" name="invite[header_image]" type="file" data-style-property="header_image" defaultValue={this.state.header_image} onChange={(e)=>this._handleImageChange(e)}/>
               <span className="image-block" style={{backgroundImage: "url(" + this.state.header_image_url + ")"}}></span>
 
               <label>Header Font Family</label>
@@ -312,7 +312,7 @@ export default class Editor extends React.Component {
               <textarea name="invite[bride_description]" type="text" data-style-property="bride_description" defaultValue={this.state.bride_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Bride Image</label>
-              <input className="picture-input" name="invite[bride_image]" type="file" data-style-property="bride_image" defaultValue={this.state.bride_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <input className="picture-input custom-file-input" name="invite[bride_image]" type="file" data-style-property="bride_image" defaultValue={this.state.bride_image} onChange={(e)=>this._handleImageChange(e)}/>
               <span className="image-block" style={{backgroundImage: "url(" + this.state.bride_image_url + ")"}}></span>
 
               <label>Groom Name</label>
@@ -322,7 +322,7 @@ export default class Editor extends React.Component {
               <textarea name="invite[groom_description]" type="text" data-style-property="groom_description" defaultValue={this.state.groom_description} onChange={this._handleChange.bind(this)}/>
 
               <label>Groom Image</label>
-              <input className="picture-input" name="invite[groom_image]" type="file" data-style-property="groom_image" defaultValue={this.state.groom_image} onChange={(e)=>this._handleImageChange(e)}/>
+              <input className="picture-input custom-file-input" name="invite[groom_image]" type="file" data-style-property="groom_image" defaultValue={this.state.groom_image} onChange={(e)=>this._handleImageChange(e)}/>
               <span className="image-block" style={{backgroundImage: "url(" + this.state.groom_image_url + ")"}}></span>
 
               <label>Story Title</label>
