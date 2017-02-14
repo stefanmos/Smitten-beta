@@ -19,15 +19,16 @@ body
   transition-property: all
   transition-duration: .5s
 
+.active
+  background: #232323
+
+
 #menu, #editor, #preview
   display: block
   float: left
 
 #menu
   background: #1E1E1E
-
-#editor
-  background: #232323
 
 #menu
   min-width: 50px
@@ -42,15 +43,21 @@ body
     cursor: pointer
     font-size: 20px
     color: #A3A3A3
+    transition: all .3s ease-in-out
     &:hover
       background: #232323
       color: #FFFFFF
+      // transform: scale(1.2)
+
   .top
     border-bottom: .5px solid #353536
 
 #editor
+  background: #232323
   min-width: 250px
-  // box-shadow: 0 0 20px 0 rgba(48,51,56,0.40)
+  -webkit-box-shadow: 9px 0px 16px -3px rgba(0,0,0,0.3)
+  -moz-box-shadow: 9px 0px 16px -3px rgba(0,0,0,0.3)
+  box-shadow: 9px 0px 16px -3px rgba(0,0,0,0.3)
   padding: 10px
   overflow-y: scroll
   padding-top: 60px
@@ -97,6 +104,8 @@ body
     margin-top: 0 !important
     margin-bottom: 0 !important
     color: #FFF
+    i
+      color: #353536
 
 
 input[type="range"]
@@ -143,12 +152,20 @@ input[type="range"]::-webkit-slider-thumb
 
 
 .sketch-picker
-  background-color: #161616 !important
-  box-shadow: rgba(0, 0, 0, 0)
+  background-color: #232323 !important
+  -webkit-box-Sshadow: 0px 5px 15px -6px rgba(0,0,0,0.9) !important
+  -moz-box-shadow: 0px 5px 15px -6px rgba(0,0,0,0.9) !important
+  box-shadow: 0px 5px 15px -6px rgba(0,0,0,0.9) !important
   input
     background-color: #232323
+    -webkit-box-shadow: rgb(109, 109, 109) 0px 0px 0px 1px inset !important
+    box-shadow: rgb(109, 109, 109) 0px 0px 0px 1px inset !important
     color: #6D6D6D
   span
     color: #6D6D6D !important
   .flexbox-fix
     border-top-color: #232323 !important
+
+.RSVP input
+  background: #353536
+  opacity: .4

@@ -29,18 +29,18 @@ export default class Preview extends React.Component {
     },
     bride_profile: {
       display: "block",
-      width: 200,
-      height: 200,
-      borderRadius: 200,
+      width: 150,
+      height: 150,
+      borderRadius: 150,
       backgroundSize: "cover",
       backgroundImage: "url(" + this.props.bride_image_url + ")",
       margin: "auto",
     },
     groom_profile: {
       display: "block",
-      width: 200,
-      height: 200,
-      borderRadius: 200,
+      width: 150,
+      height: 150,
+      borderRadius: 150,
       backgroundSize: "cover",
       backgroundImage: "url(" + this.props.groom_image_url + ")",
       margin: "auto",
@@ -79,35 +79,10 @@ export default class Preview extends React.Component {
           <h1 style={{fontFamily: this.props.header_font, letterSpacing: this.props.header_font_letterspacing, fontSize: this.props.header_font_size}} >{this.props.header_title}</h1>
           <hr style={{borderColor: this.props.primary_color}}></hr>
           <h4 style={{textTransform: "uppercase", fontWeight: "500"}}>will be getting married {this.props.wedding_date}</h4>
-
-            {this.props.wedding_date} |
-            {this.props.primary_color} |
-            {this.props.secondary_color} |
-            {this.props.header_color} |
-            {this.props.primary_background_color} |
-            {this.props.secondary_background_color} |
-            {this.props.header_font} |
-            {this.props.primary_font} |
-            {this.props.secondary_font} |
-            {this.props.header_font_size} |
-            {this.props.primary_font_size} |
-            {this.props.secondary_font_size} |
-            {this.props.primary_font_letterspacing} |
-            {this.props.secondary_font_letterspacing} |
-            {this.props.header_font_letterspacing} |
-            {this.props.bride_name} |
-            {this.props.bride_description} |
-            {this.props.groom_name} |
-            {this.props.groom_description} |
-            {this.props.story_title} |
-            {this.props.story_description}
-            {this.props.venue_name} |
-            {this.props.venue_description} |
-            {this.props.venue_coordinates}
         </div>
 
         <div style={styles.intro}>
-          <div className="grid brideandgroom">
+          <div className="grid">
             <div className="column-6-12">
               <div style={styles.bride_profile}></div>
               <h3>{this.props.bride_name}</h3>
@@ -160,7 +135,7 @@ export default class Preview extends React.Component {
 
         </div>
 
-        <div style={styles.rsvp}>
+        <div style={styles.rsvp} className="RSVP">
           <h1>RSVP</h1>
 
           <label>Name</label>
@@ -177,6 +152,33 @@ export default class Preview extends React.Component {
 
           <a className="button-md">RSVP</a>
 
+        </div>
+
+        <div>
+          {this.props.wedding_date} |
+          {this.props.primary_color} |
+          {this.props.secondary_color} |
+          {this.props.header_color} |
+          {this.props.primary_background_color} |
+          {this.props.secondary_background_color} |
+          {this.props.header_font} |
+          {this.props.primary_font} |
+          {this.props.secondary_font} |
+          {this.props.header_font_size} |
+          {this.props.primary_font_size} |
+          {this.props.secondary_font_size} |
+          {this.props.primary_font_letterspacing} |
+          {this.props.secondary_font_letterspacing} |
+          {this.props.header_font_letterspacing} |
+          {this.props.bride_name} |
+          {this.props.bride_description} |
+          {this.props.groom_name} |
+          {this.props.groom_description} |
+          {this.props.story_title} |
+          {this.props.story_description}
+          {this.props.venue_name} |
+          {this.props.venue_description} |
+          {this.props.venue_coordinates}
         </div>
 
         </div>

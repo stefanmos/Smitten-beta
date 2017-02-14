@@ -213,7 +213,7 @@ export default class Editor extends React.Component {
               <input className="color-picker" name="invite[secondary_background_color]" readOnly value={this.state.secondary_background_color}/>
               <span className="color-block"><ColorPicker color={this.state.secondary_background_color} update={this._handleSecondaryBackgroundColor.bind(this)}/></span>
 
-              <label>Secondary Background Font</label>
+              <label>Primary Font</label>
               <select name="invite[primary_font]" type="text" data-style-property="primary_font" defaultValue={this.state.primary_font} onChange={this._handleChange.bind(this)}>
                 <option value="Didot">Didot</option>
                 <option value="Helvetica">Helvetica</option>
@@ -224,15 +224,30 @@ export default class Editor extends React.Component {
                 <option value="Rubik">Rubik</option>
               </select>
 
+              <div style={{width: "100%"}}>
+                <div style={{width: "110px",float: "left"}}>
+                  <label>Size</label>
+                  <span>
+                    <input defaultValue={this.state.primary_font_size}/>
+                  </span>
+                </div>
+                <div style={{width: "110px",float: "right"}}>
+                  <label>Letterspacing</label>
+                  <span>
+                    <input defaultValue={this.state.primary_font_size}/>
+                  </span>
+                </div>
+              </div>
+
               <label>Primary Font Size</label>
               <span className="input-slider">
-                <label>{this.state.primary_font_size}</label>
+                <label>{this.state.primary_font_size}<i> px</i></label>
                 <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.state.primary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Primary Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.primary_font_letterspacing}</label>
+                <label>{this.state.primary_font_letterspacing}<i> px</i></label>
                 <input name="invite[primary_font_letterspacing]" type="range" data-style-property="primary_font_letterspacing" min="-4" max="150" defaultValue={this.state.primary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
@@ -249,13 +264,13 @@ export default class Editor extends React.Component {
 
               <label>Secondary Font Size</label>
               <span className="input-slider">
-                <label>{this.state.secondary_font_size}</label>
-                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="30" max="150" defaultValue={this.state.secondary_font_size} onChange={this._handleChange.bind(this)}/>
+                <label>{this.state.secondary_font_size}<i> px</i></label>
+                <input name="invite[secondary_font_size]" type="range" data-style-property="secondary_font_size" min="6" max="100" defaultValue={this.state.secondary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Secondary Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.secondary_font_letterspacing}</label>
+                <label>{this.state.secondary_font_letterspacing}<i> px</i></label>
                 <input name="invite[secondary_font_letterspacing]" type="range" data-style-property="secondary_font_letterspacing" min="-4" max="150" defaultValue={this.state.secondary_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
@@ -290,20 +305,20 @@ export default class Editor extends React.Component {
 
               <label>Header Font Size</label>
               <span className="input-slider">
-                <label>{this.state.header_font_size}</label>
+                <label>{this.state.header_font_size}<i> px</i></label>
                 <input name="invite[header_font_size]" type="range" data-style-property="header_font_size" min="30" max="150" defaultValue={this.state.header_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Header Font Letterspacing</label>
               <span className="input-slider">
-                <label>{this.state.header_font_letterspacing}</label>
+                <label>{this.state.header_font_letterspacing}<i> px</i></label>
                 <input name="invite[header_font_letterspacing]" type="range" data-style-property="header_font_letterspacing" min="-4" max="150" defaultValue={this.state.header_font_letterspacing} onChange={this._handleChange.bind(this)}/>
               </span>
 
             </div>
 
             <div className={this.state.menuStory}>
-              <label>Story</label>
+              <label>STORY</label> <br/><br/>
 
               <label>Bride Name</label>
               <input name="invite[bride_name]" type="text" data-style-property="bride_name" defaultValue={this.state.bride_name} onChange={this._handleChange.bind(this)}/>
@@ -334,18 +349,18 @@ export default class Editor extends React.Component {
             </div>
 
             <div className={this.state.menuGallery}>
-              <label>Gallery</label>
+              <label>GALLERY</label> <br/><br/>
 
               <label>Gallery Image</label>
-              <input className="picture-input" type="file" />
+              <input className="picture-input custom-file-input" type="file" />
               <span className="image-block"></span>
 
               <label>Gallery Image</label>
-              <input className="picture-input" type="file" />
+              <input className="picture-input custom-file-input" type="file" />
               <span className="image-block"></span>
 
               <label>Gallery Image</label>
-              <input className="picture-input" type="file" />
+              <input className="picture-input custom-file-input" type="file" />
               <span className="image-block"></span>
 
               <a className="button">Add +</a>
