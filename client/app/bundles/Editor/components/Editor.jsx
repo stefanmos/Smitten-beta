@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Preview from '../components/Preview';
+import MenuHome from '../components/menu/MenuHome';
 import ColorPicker from '../components/ColorPicker';
 
 export default class Editor extends React.Component {
@@ -42,7 +43,7 @@ export default class Editor extends React.Component {
       groom_image_file: '',
       groom_image_url: this.props.groom_image_url,
       menuToggle: 'hide',
-      menuHome: '',
+      menuHome: 'hide',
       menuEdit: 'hide',
       menuHeader: 'hide',
       menuStory: 'hide',
@@ -56,6 +57,7 @@ export default class Editor extends React.Component {
     };
   }
 
+  /* POST REQUEST TO RAILS API */
   _handleSubmit(e) {
     e.preventDefault();
 
@@ -79,34 +81,14 @@ export default class Editor extends React.Component {
     });
   }
 
+  /* HANDLE INPUTBOX CHANGES REFACTORED FROM https://goo.gl/9BbiUH */
   _handleChange(e) {
     var styleProperty = e.target.getAttribute('data-style-property')
     var styleValue = e.target.value
-
-    if(styleProperty === 'header_title') this.setState({ header_title: styleValue })
-    if(styleProperty === 'wedding_date') this.setState({ wedding_date: styleValue })
-    if(styleProperty === 'header_font') this.setState({ header_font: styleValue })
-    if(styleProperty === 'primary_font') this.setState({ primary_font: styleValue })
-    if(styleProperty === 'secondary_font') this.setState({ secondary_font: styleValue })
-    if(styleProperty === 'header_font_size') this.setState({ header_font_size: styleValue })
-    if(styleProperty === 'primary_font_size') this.setState({ primary_font_size: styleValue })
-    if(styleProperty === 'secondary_font_size') this.setState({ secondary_font_size: styleValue })
-    if(styleProperty === 'primary_font_letterspacing') this.setState({ primary_font_letterspacing: styleValue })
-    if(styleProperty === 'secondary_font_letterspacing') this.setState({ secondary_font_letterspacing: styleValue })
-    if(styleProperty === 'header_font_letterspacing') this.setState({ header_font_letterspacing: styleValue })
-    if(styleProperty === 'bride_name') this.setState({ bride_name: styleValue })
-    if(styleProperty === 'bride_description') this.setState({ bride_description: styleValue })
-    if(styleProperty === 'groom_name') this.setState({ groom_name: styleValue})
-    if(styleProperty === 'groom_description') this.setState({ groom_description: styleValue})
-    if(styleProperty === 'story_title') this.setState({ story_title: styleValue})
-    if(styleProperty === 'story_description') this.setState({ story_description: styleValue })
-    if(styleProperty === 'venue_name') this.setState({ venue_name: styleValue})
-    if(styleProperty === 'venue_description') this.setState({ venue_description: styleValue})
-    if(styleProperty === 'venue_coordinates') this.setState({ venue_coordinates: styleValue})
-
+    this.setState({[styleProperty]: styleValue});
   }
 
-
+  /* HANDLE IMAGE CHANGES - NEEDS TO REFACTORED!!!!! */
   _handleImageChange(e) {
     e.preventDefault();
 
@@ -124,12 +106,14 @@ export default class Editor extends React.Component {
     reader.readAsDataURL(file)
   }
 
+  /* HANDLE COLORPICKER CHANGES - NEEDS TO REFACTORED!!!!! */
   _handlePrimaryColor = (color) => {this.setState({ primary_color: color.hex })}
   _handleSecondaryColor = (color) => {this.setState({ secondary_color: color.hex })}
   _handleHeaderColor = (color) => {this.setState({ header_color: color.hex })}
   _handlePrimaryBackgroundColor = (color) => {this.setState({ primary_background_color: color.hex })}
   _handleSecondaryBackgroundColor = (color) => {this.setState({ secondary_background_color: color.hex })}
 
+/* MENU */
   _menuToggle(e) {
     if(this.state.menuToggle === '') this.setState({ menuToggle: 'hide' })
     else this.setState({ menuToggle: '' })
@@ -150,17 +134,7 @@ export default class Editor extends React.Component {
                     menuRSVP: 'hide',
                     menuGiftReg: 'hide'})
 
-    if(styleProperty === 'menuHome') this.setState({ menuHome: '', menuToggle: ''})
-    if(styleProperty === 'menuEdit') this.setState({ menuEdit: '', menuToggle: ''})
-    if(styleProperty === 'menuHeader') this.setState({ menuHeader: '', menuToggle: ''})
-    if(styleProperty === 'menuStory') this.setState({ menuStory: '', menuToggle: ''})
-    if(styleProperty === 'menuGallery') this.setState({ menuGallery: '', menuToggle: ''})
-    if(styleProperty === 'menuBrGr') this.setState({ menuBrGr: '', menuToggle: ''})
-    if(styleProperty === 'menuMenu') this.setState({ menuMenu: '', menuToggle: ''})
-    if(styleProperty === 'menuScedule') this.setState({ menuScedule: '', menuToggle: ''})
-    if(styleProperty === 'menuVenue') this.setState({ menuVenue: '', menuToggle: ''})
-    if(styleProperty === 'menuRSVP') this.setState({ menuRSVP: '', menuToggle: ''})
-    if(styleProperty === 'menuGiftReg') this.setState({ menuGiftReg: '', menuToggle: ''})
+    this.setState({[styleProperty]: '', menuToggle: ''});
   }
 
   render() {
@@ -191,9 +165,7 @@ export default class Editor extends React.Component {
               <a className="button" href={"/invites/" + this.props.invite.id}>View</a>
             </div>
 
-            <div className={this.state.menuHome}>
-              <label className="label-header">Home</label>
-            </div>
+            <MenuHome menuHomeState={this.state.menuHome}/>
 
             <div className={this.state.menuEdit}>
 
@@ -224,20 +196,7 @@ export default class Editor extends React.Component {
                 <option value="Rubik">Rubik</option>
               </select>
 
-              <div style={{width: "100%"}}>
-                <div style={{width: "110px",float: "left"}}>
-                  <label>Size</label>
-                  <span>
-                    <input defaultValue={this.state.primary_font_size}/>
-                  </span>
-                </div>
-                <div style={{width: "110px",float: "right"}}>
-                  <label>Letterspacing</label>
-                  <span>
-                    <input defaultValue={this.state.primary_font_size}/>
-                  </span>
-                </div>
-              </div>
+
 
               <label>Primary Font Size</label>
               <span className="input-slider">

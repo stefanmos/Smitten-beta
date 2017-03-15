@@ -4,6 +4,20 @@ export default class Preview extends React.Component {
   render() {
 
     var styles = {
+    fontPrimary: {
+      fontSize: this.props.primary_font_size,
+      letterSpacing: this.props.primary_font_letterspacing,
+      fontFamily: this.props.primary_font,
+    },
+    fontSecondary: {
+      fontSize: this.props.secondary_font_size,
+      letterSpacing: this.props.secondary_font_letterspacing,
+      fontFamily: this.props.secondary_font,
+      textTransform: "uppercase",
+    },
+    fontParagraph: {
+      fontFamily: this.props.secondary_font,
+    },
     header: {
       backgroundColor: this.props.header_color,
       backgroundImage: "url(" + this.props.header_image_url + ")",
@@ -16,7 +30,6 @@ export default class Preview extends React.Component {
     intro: {
       padding: "10vh 5%",
       textAlign: "center",
-      fontFamily: this.props.primary_font,
       color: this.props.secondary_color,
       backgroundColor: this.props.primary_background_color,
     },
@@ -24,7 +37,6 @@ export default class Preview extends React.Component {
       backgroundColor: this.props.secondary_background_color,
       padding: "10vh 5%",
       textAlign: "center",
-      fontFamily: this.props.secondary_font,
       color: this.props.primary_color,
     },
     bride_profile: {
@@ -58,14 +70,12 @@ export default class Preview extends React.Component {
       backgroundColor: this.props.primary_background_color,
       padding: "10vh 5%",
       textAlign: "center",
-      fontFamily: this.props.primary_font,
       color: this.props.secondary_color,
     },
     rsvp: {
       backgroundColor: this.props.secondary_background_color,
       padding: "10vh 20%",
       textAlign: "center",
-      fontFamily: this.props.primary_font,
       color: this.props.primary_color,
     }
 }
@@ -78,31 +88,31 @@ export default class Preview extends React.Component {
         <div style={styles.header}>
           <h1 style={{fontFamily: this.props.header_font, letterSpacing: this.props.header_font_letterspacing, fontSize: this.props.header_font_size}} >{this.props.header_title}</h1>
           <hr style={{borderColor: this.props.primary_color}}></hr>
-          <h4 style={{textTransform: "uppercase", fontWeight: "500"}}>will be getting married {this.props.wedding_date}</h4>
+          <h4 style={styles.fontSecondary}>will be getting married {this.props.wedding_date}</h4>
         </div>
 
         <div style={styles.intro}>
           <div className="grid">
             <div className="column-6-12">
               <div style={styles.bride_profile}></div>
-              <h3>{this.props.bride_name}</h3>
-              <p>{this.props.bride_description}</p>
+              <h3 style={styles.fontSecondary}>{this.props.bride_name}</h3>
+              <p style={styles.fontParagraph}>{this.props.bride_description}</p>
             </div>
             <div className="column-6-12">
               <div style={styles.groom_profile}></div>
-              <h3>{this.props.groom_name}</h3>
-              <p>{this.props.groom_description}</p>
+              <h3 style={styles.fontSecondary}>{this.props.groom_name}</h3>
+              <p style={styles.fontParagraph}>{this.props.groom_description}</p>
             </div>
             <div className="column-12-12">
-              <h3>{this.props.story_title}</h3>
-              <p>{this.props.story_description}</p>
+              <h3 style={styles.fontSecondary}>{this.props.story_title}</h3>
+              <p style={styles.fontParagraph}>{this.props.story_description}</p>
             </div>
           </div>
         </div>
 
         <div style={styles.bridesmaidsGroomsmen}>
 
-          <h1>BRIDESMAIDS & GROOMSMEN</h1>
+          <h1 style={styles.fontPrimary}>BRIDESMAIDS & GROOMSMEN</h1>
             <div className="column-2-12">
               <div style={styles.bridesmaidsgroomsmen_profile}></div>
             </div>
@@ -127,16 +137,16 @@ export default class Preview extends React.Component {
         </div>
 
         <div style={styles.venue}>
-          <h1>VENUE</h1>
+          <h1 style={styles.fontPrimary}>VENUE</h1>
 
-          <h3>{this.props.venue_name}</h3>
-          <p>{this.props.venue_description}</p>
-          <p>{this.props.venue_coordinates}</p>
+          <h3 style={styles.fontSecondary}>{this.props.venue_name}</h3>
+          <p style={styles.fontParagraph}>{this.props.venue_description}</p>
+          <p style={styles.fontParagraph}>{this.props.venue_coordinates}</p>
 
         </div>
 
         <div style={styles.rsvp} className="RSVP">
-          <h1>RSVP</h1>
+          <h1 style={styles.fontPrimary}>RSVP</h1>
 
           <label>Name</label>
           <input disabled type="text" placeholder="Name"/>
