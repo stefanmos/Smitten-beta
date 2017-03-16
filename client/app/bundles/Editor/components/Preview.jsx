@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Map from '../components/Map';
 
 export default class Preview extends React.Component {
   render() {
@@ -144,6 +145,11 @@ export default class Preview extends React.Component {
           <p style={styles.fontParagraph}>{this.props.venue_coordinates}</p>
 
         </div>
+
+        <Map
+          venue_name={this.props.venue_name}
+          zoom={12}
+        />
 
         <div style={styles.rsvp} className="RSVP">
           <h1 style={styles.fontPrimary}>RSVP</h1>

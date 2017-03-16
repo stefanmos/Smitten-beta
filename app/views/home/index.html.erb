@@ -9,8 +9,8 @@
           <li><%= link_to "Edit Invite", edit_invite_path(current_user.invite) %></li>
           <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
-          <li><a href="#">Feautures</a></li>
-          <li><a href="#">Pricing</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
           <li><a class="cta" href="#">Get Started</a></li>
           <li>|</li>
           <li><%= link_to('Login', new_user_session_path)  %></li>
@@ -23,8 +23,8 @@
 
 <div class="grid-full header">
   <div class="grid">
-    <img id="header-logo" src='assets/logo_header.svg' alt="">
-    <h1>CRAFT YOUR OWN WEDDING INVITATION</h1>
+    <!-- <img id="header-logo" src='assets/logo_header.svg' alt=""> -->
+    <h1>Craft your own wedding invitation</h1>
     <h5>FREE 7 DAY TRIAL. NO CREDIT CARD REQUIRED.</h5>
     <hr>
     <a class="button-md" href="#">START CRAFTING</a>
@@ -32,11 +32,11 @@
   </div>
 </div>
 
-<div class="grid-full customize">
+<div class="grid-full customize" id="features">
   <div class="grid">
     <div class="column-12-12">
       <h1>Customize</h1>
-      <h5>INLINE EDITING MEANS NO SEARCHING WHERE TO EDIT THINGS</h5>
+      <!-- <h5>INLINE EDITING MEANS NO SEARCHING WHERE TO EDIT THINGS</h5> -->
     </div>
     <div class="column-12-12 options">
       <div class="column-3-12 option">
@@ -83,7 +83,7 @@
   </div>
 </div>
 
-<div class="grid-full pricing">
+<div class="grid-full pricing" id="pricing">
   <div class="grid options">
     <div class="column-1-12"></div>
     <div class="column-10-12">

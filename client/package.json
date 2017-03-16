@@ -30,7 +30,8 @@
     "react-on-rails": "6.4.2",
     "webpack": "^1.14.0",
     "react-color": "^2.11.1",
-    "reactcss": "^1.1.1"
+    "reactcss": "^1.1.1",
+    "google-map-react": "^0.23.0"
   },
   "devDependencies": {
   }

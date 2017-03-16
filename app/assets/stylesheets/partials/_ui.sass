@@ -27,6 +27,7 @@ nav
       color: #FFF
       &:hover
         background: darken( #FF6A6A, 10% )
+        box-shadow: 0 12px 20px 0 rgba(0,0,0,0.10)
 
 // 6.2 Lists
 
@@ -51,6 +52,7 @@ nav
   &:hover
     background: #FFF
     color: #000
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.10)
 
 .button-md
   display: inline-block
@@ -68,8 +70,10 @@ nav
   color: #000
   +transition(.5s)
   &:hover
-    background: #000
+    background: #FF6A6A
+    border-color: #FF6A6A
     color: #FFF
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.50)
 
 .button-left
   @extend .button

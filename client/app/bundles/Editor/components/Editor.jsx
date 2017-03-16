@@ -88,19 +88,20 @@ export default class Editor extends React.Component {
     this.setState({[styleProperty]: styleValue});
   }
 
-  /* HANDLE IMAGE CHANGES - NEEDS TO REFACTORED!!!!! */
+  /* HANDLE IMAGE CHANGES */
   _handleImageChange(e) {
     e.preventDefault();
 
     var styleProperty = e.target.getAttribute('data-style-property')
+    var stylePropertyFile = styleProperty + '_file'
+    var stylePropertyUrl = styleProperty + '_url'
+
 
     let reader = new FileReader();
     let file = e.target.files[0];
 
     reader.onloadend = () => {
-      if(styleProperty === 'header_image') this.setState({ header_image_file: file, header_image_url: reader.result })
-      if(styleProperty === 'bride_image') this.setState({ bride_image_file: file, bride_image_url: reader.result })
-      if(styleProperty === 'groom_image') this.setState({ groom_image_file: file, groom_image_url: reader.result })
+      this.setState({[stylePropertyFile]: file, [stylePropertyUrl]: reader.result })
     }
 
     reader.readAsDataURL(file)
@@ -195,8 +196,6 @@ export default class Editor extends React.Component {
                 <option value="Oswald">Oswald</option>
                 <option value="Rubik">Rubik</option>
               </select>
-
-
 
               <label>Primary Font Size</label>
               <span className="input-slider">
