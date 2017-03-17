@@ -148,7 +148,7 @@ export default class Preview extends React.Component {
 
         <Map
           venue_name={this.props.venue_name}
-          zoom={12}
+          coordinates={this.props.venue_coordinates}
         />
 
         <div style={styles.rsvp} className="RSVP">

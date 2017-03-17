@@ -1,6 +1,8 @@
 /* https://github.com/istarkov/google-map-react */
 /* https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
 
+/* Rebuild https://tomchentw.github.io/react-google-maps/places/search-box - https://github.com/tomchentw/react-google-maps*/
+
 
 import React, { PropTypes } from 'react';
 import GoogleMapReact from 'google-map-react';
@@ -16,21 +18,31 @@ const Marker = ({ text }) => (
 export default class Map extends React.Component {
 
   static defaultProps = {
-    center: {lat: -26.1554138, lng: 27.9659036},
-    zoom: 11
+    zoom: 12
   };
 
   render() {
+
+    /* Split and convert coordinate into an object containing floats to be send to Google map */
+
+    const res = this.props.coordinates.split(',');
+    const center = {
+      lat: parseFloat(res[0]),
+      lng: parseFloat(res[1])
+    }
+
+    console.log(center)
+
     return (
       <div style={{width: '100%', height: '400px'}}>
         map
        <GoogleMapReact
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
+        center={center}
+        zoom={this.props.zoom}
       >
         <Marker
-          lat={-26.1554138}
-          lng={27.9659036}
+          lat={parseFloat(res[0])}
+          lng={parseFloat(res[1])}
           text={this.props.venue_name}
         />
       </GoogleMapReact>

@@ -200,7 +200,7 @@ export default class Editor extends React.Component {
               <label>Primary Font Size</label>
               <span className="input-slider">
                 <label>{this.state.primary_font_size}<i> px</i></label>
-                <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="30" max="150" defaultValue={this.state.primary_font_size} onChange={this._handleChange.bind(this)}/>
+                <input name="invite[primary_font_size]" type="range" data-style-property="primary_font_size" min="20" max="100" defaultValue={this.state.primary_font_size} onChange={this._handleChange.bind(this)}/>
               </span>
 
               <label>Primary Font Letterspacing</label>
