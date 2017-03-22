@@ -1,7 +1,9 @@
 /* https://github.com/istarkov/google-map-react */
 /* https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
 
+/* https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
 /* Rebuild https://tomchentw.github.io/react-google-maps/places/search-box - https://github.com/tomchentw/react-google-maps*/
+
 
 
 import React, { PropTypes } from 'react';
@@ -23,6 +25,8 @@ export default class Map extends React.Component {
 
   render() {
 
+    /* Make sure that props are formatted correctly https://people.cs.pitt.edu/~mehmud/cs134/javascript2.html*/
+
     /* Split and convert coordinate into an object containing floats to be send to Google map */
 
     const res = this.props.coordinates.split(',');
@@ -35,10 +39,10 @@ export default class Map extends React.Component {
 
     return (
       <div style={{width: '100%', height: '400px'}}>
-        map
        <GoogleMapReact
         center={center}
         zoom={this.props.zoom}
+
       >
         <Marker
           lat={parseFloat(res[0])}
