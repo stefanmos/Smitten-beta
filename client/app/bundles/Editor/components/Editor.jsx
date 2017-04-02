@@ -8,6 +8,7 @@ export default class Editor extends React.Component {
     super(props);
     this.state = {
       props: this.props.invite,
+      agendas: this.props.invite.agendas,
       header_title: this.props.invite.header_title,
       wedding_date: this.props.invite.wedding_date,
       primary_color: this.props.invite.primary_color,
@@ -18,12 +19,12 @@ export default class Editor extends React.Component {
       header_font: this.props.invite.header_font,
       primary_font: this.props.invite.primary_font,
       secondary_font: this.props.invite.secondary_font,
-      header_font_size: this.props.invite.header_font_size,
-      primary_font_size: this.props.invite.primary_font_size,
-      secondary_font_size: this.props.invite.secondary_font_size,
-      primary_font_letterspacing: this.props.invite.primary_font_letterspacing,
-      secondary_font_letterspacing: this.props.invite.secondary_font_letterspacing,
-      header_font_letterspacing: this.props.invite.header_font_letterspacing,
+      header_font_size: parseInt(this.props.invite.header_font_size),
+      primary_font_size: parseInt(this.props.invite.primary_font_size),
+      secondary_font_size: parseInt(this.props.invite.secondary_font_size),
+      primary_font_letterspacing: parseInt(this.props.invite.primary_font_letterspacing),
+      secondary_font_letterspacing: parseInt(this.props.invite.secondary_font_letterspacing),
+      header_font_letterspacing: parseInt(this.props.invite.header_font_letterspacing),
       bride_name: this.props.invite.bride_name,
       bride_description: this.props.invite.bride_description,
       groom_name: this.props.invite.groom_name,
@@ -138,7 +139,32 @@ export default class Editor extends React.Component {
     this.setState({[styleProperty]: '', menuToggle: ''});
   }
 
+  handleDelete(id) {
+
+    $.ajax({
+      url: ("/invites/" + this.props.invite.id + "/agendas/" + id),
+      type: 'DELETE',
+      success(response) {
+            console.log('successfully removed item')
+        }
+      });
+    }
+
   render() {
+
+    /* console.log(this.props.invite) */
+    /* console.log(this.props.agendas) */
+
+    /* Agenda Nodes Mapping */
+    var agendaNodes = this.props.agendas.map((agendaItem) => {
+      return (
+        <div key={agendaItem.id}>
+          {agendaItem.name} | {agendaItem.time} | {agendaItem.id}
+          <button onClick={this.handleDelete.bind(this, agendaItem.id)}>Delete</button>
+        </div>
+      )
+    });
+
     return (
 
       <div id="editor-container">
@@ -358,13 +384,19 @@ export default class Editor extends React.Component {
             <div className={this.state.menuScedule}>
               <label>SCHEDULE</label> <br/><br/>
 
+              <div className="column-half">
               <label>Item</label>
               <input type="text" placeholder="Reception"/>
+              </div>
 
+              <div className="column-half">
               <label>Time</label>
               <input type="text" placeholder="10h00"/>
+              </div>
 
               <a className="button">Add +</a>
+
+              {agendaNodes}
             </div>
 
             <div className={this.state.menuVenue}>
@@ -432,6 +464,7 @@ export default class Editor extends React.Component {
           header_image_url={this.state.header_image_url}
           bride_image_url={this.state.bride_image_url}
           groom_image_url={this.state.groom_image_url}
+          agendas={agendaNodes}
         />
 
       </div>

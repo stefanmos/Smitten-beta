@@ -51,8 +51,8 @@ export default class Preview extends React.Component {
       backgroundSize: "cover",
       backgroundImage: "url(" + this.props.bride_image_url + ")",
       margin: "auto",
-      webkitBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
-      mozBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
+      WebkitBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
+      MozBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
       boxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
     },
     groom_profile: {
@@ -63,8 +63,8 @@ export default class Preview extends React.Component {
       backgroundSize: "cover",
       backgroundImage: "url(" + this.props.groom_image_url + ")",
       margin: "auto",
-      webkitBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
-      mozBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
+      WebkitBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
+      MozBoxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
       boxShadow: "0px 5px 15px -6px rgba(0,0,0,0.2)",
     },
     bridesmaidsgroomsmen_profile: {
@@ -156,6 +156,7 @@ export default class Preview extends React.Component {
         <div style={styles.venue}>
           <div className="grid">
             <h1 style={styles.fontPrimary}>SCEDULE</h1>
+              {this.props.agendas}
               <div className="column-6-12">
                 Welcome Drinks
               </div>

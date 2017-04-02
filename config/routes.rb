@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :invites
+  resources :invites do
+    resources :agendas
+  end
   devise_for :users
   get 'hello_world', to: 'hello_world#index'
   root to: "home#index"

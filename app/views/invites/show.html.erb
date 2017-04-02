@@ -151,7 +151,10 @@
   <%= @invite.venue_coordinates %>
 </p>
 
-
+<h3>Agendas</h3>
+<%= @invite.agendas.count %>
+<%= render @invite.agendas %>
+<%= render "agendas/form" %>
 
 <%= link_to 'Edit', edit_invite_path(@invite) %> |
 <%= link_to 'Back', invites_path %>

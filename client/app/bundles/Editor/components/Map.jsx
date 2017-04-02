@@ -35,7 +35,7 @@ export default class Map extends React.Component {
       lng: parseFloat(res[1])
     }
 
-    console.log(center)
+    /* console.log(center) */
 
     return (
       <div style={{width: '100%', height: '400px'}}>

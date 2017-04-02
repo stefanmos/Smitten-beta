@@ -20,6 +20,10 @@ $column-width: 100% / $columns
   float: left
   padding: $content-padding
 
+.column-half
+  width: 115px
+  float: left
+
 @for $x from 1 through $columns
   .column-#{$x}-#{$columns}
     width: $column-width * $x
